@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Кулибин Иван Петрович</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, serif;
+      /* Фоновое изображение */
+      background-image: url("C:/kulibin/images/9.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 40px;
+    }
+
+    /* Декоративные изображения (над именем и разделитель) */
+    .decor-image {
+      width: 600px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 5px auto !important;
+    }
+
+    /* Заголовок (ФИО) в Monotype Corsiva */
+    .title {
+      font-family: "Monotype Corsiva", cursive;
+      font-size: 36px;
+      font-weight: bold;
+      color: #7a4e2d;
+      margin-bottom: 20px;
+    }
+
+    /* Контейнер для дат и фото */
+    .dates-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 400px;
+      margin: 0 auto 25px auto;
+    }
+
+    .date-block {
+      font-family: "Monotype Corsiva", cursive;
+      font-size: 22px;
+      color: #7a4e2d;
+      font-style: italic;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .image-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 10px auto;
+      border-radius: 50%;
+      border: 8px solid #7a4e2d;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      background-color: #ddd;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    /* Основной текст */
+    .content {
+      width: 600px;
+      max-width: 100%;
+      margin: 10px auto;
+      text-align: center;
+      font-size: 20px;
+      color: #333;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .content p {
+      margin: 0 0 2px 0;
+    }
+
+    /* Финальный блок */
+    .footer-block {
+      margin-top: 30px;
+    }
+
+    /* Контейнер для финальной картинки (пергамента) + печать + текст */
+    .final-image-container {
+      position: relative;
+      display: inline-block;
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    .final-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .stamp-overlay {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      width: 120px;
+      height: auto;
+      pointer-events: none;
+    }
+
+    /* Эффект глубины при нажатии на текст */
+    .pressable-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Monotype Corsiva", cursive;
+      font-size: 40px;
+      color: #c1735d;
+      cursor: pointer;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      transition: 0.2s ease;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .pressable-text:active {
+      transform: translate(-50%, -50%) scale(0.97);
+      text-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Украшение над именем (теперь 8.png) -->
+    <div>
+      <img 
+        src="C:/kulibin/images/8.png"
+        alt="Украшение над именем"
+        class="decor-image"
+      />
+    </div>
+
+    <div class="title">Кулибин Иван Петрович</div>
+
+    <div class="dates-container">
+      <div class="date-block">
+        <div>1735</div>
+        <div>21 апреля</div>
+      </div>
+      <div class="image-container">
+        <!-- Портрет Кулибина -->
+        <img 
+          src="C:/kulibin/images/4.jpg"
+          alt="Кулибин Иван Петрович"
+          class="image"
+        />
+      </div>
+      <div class="date-block">
+        <div>1818</div>
+        <div>11 августа</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>
+        Русский изобретатель и механик XVIII века, опередивший свое время. Без формального образования он самостоятельно освоил механику, создавая сложные часовые механизмы, мосты и подъемные устройства.
+      </p>
+      <p>
+        Его самоходный экипаж и разработки в судостроении, транспорте и оптике предвосхитили достижения промышленной революции. Многие идеи, включая световые системы для маяков, значительно опередили эпоху.
+      </p>
+      <p>
+        Помимо инженерии, Кулибин увлекался живописью и музыкой, оставив богатый архив чертежей. Несмотря на отсутствие признания при жизни, его изобретения оказали огромное влияние на развитие науки и техники.
+      </p>
+
+      <!-- Разделитель (теперь 7.png) -->
+      <img 
+        src="C:/kulibin/images/7.png"
+        alt="Разделитель"
+        class="decor-image"
+      />
+
+      <p>
+        Чтобы лучше понять его путь, нужно вернуться в начало.
+      </p>
+      <p>
+        Туда, где всё зарождалось в юность будущего изобретателя, полную любопытства и первых открытий.
+      </p>
+      <p>
+        Мы окунемся в мир его гениальных творений, изменивших представление о возможностях механики.
+      </p>
+      <p>
+        А в завершение посмотрим на эпоху, в которой он жил, — время великих перемен, сложных вызовов и нераскрытых возможностей.
+      </p>
+    </div>
+
+    <!-- Финальный блок с пергаментом, печатью и текстом -->
+    <div class="footer-block">
+      <div class="final-image-container">
+        <!-- Пергамент -->
+        <img 
+          src="C:/kulibin/images/6.png"
+          alt="Пергамент"
+          class="final-image"
+        />
+        <!-- Печать -->
+        <img 
+          src="C:/kulibin/images/5.png"
+          alt="Печать"
+          class="stamp-overlay"
+        />
+        <!-- Текст с эффектом глубины -->
+        <div class="pressable-text">
+          Вы готовы начать путешествие?
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
