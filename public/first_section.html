@@ -1,11 +1,398 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Кулибин Иван Петрович</title>
+  <title>И.А. Кулибин</title>
+  <style>
+    /***************************************************
+     *                СБРОС СТИЛЕЙ
+     ***************************************************/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /***************************************************
+     *            БАЗОВЫЕ НАСТРОЙКИ
+     ***************************************************/
+    body {
+      background: url("img/bg.png") no-repeat center center;
+      background-size: cover;
+      font-family: Georgia, serif;
+      font-size: 12px;
+      line-height: 16.5px;
+      color: #000;
+    }
+
+    /* Контейнер: добавляем padding для «воздуха» */
+    .page-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 0 15px 20px; /* отступы слева/справа, а также снизу */
+      position: relative;
+    }
+
+    /***************************************************
+     *                     ШАПКА
+     ***************************************************/
+    .page-header {
+      text-align: center;
+      position: relative;
+      /* Увеличим немного padding сверху, чтобы лавры и заголовок 
+         не были вплотную к верхнему краю */
+      padding: 60px 0 20px;
+      margin-bottom: 0;
+    }
+
+    .header-inner {
+      /* Ширина 264px для текста, 
+         но учтите, что мы добавили padding контейнеру */
+      width: 264px;
+      height: 54px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Заголовок (Monotype Corsiva, 26px, italic, #8B3A3A) */
+    .header-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: "Monotype Corsiva", cursive;
+      font-size: 26px;
+      line-height: 29.17px;
+      font-weight: 400;
+      font-style: italic;
+      color: #8B3A3A;
+    }
+
+    /* Лавровые ветви: большие (130×130) */
+    .laurel-left,
+    .laurel-right {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      top: -40px;
+    }
+    .laurel-left {
+      /* Смещаем чуть меньше влево, чтобы не обрезалось */
+      left: -70px; /* было -90px */
+    }
+    .laurel-right {
+      right: -70px; /* было -90px */
+    }
+
+    /* Золотая линия под заголовком (320px) */
+    .gold-line-top {
+      display: block;
+      width: 320px;
+      max-width: 100%;
+      height: auto;
+      margin: 30px auto 0 auto;
+    }
+
+    /***************************************************
+     *           БЛОКИ 1–5 (ЧЕРЕДОВАНИЕ)
+     ***************************************************/
+    .content-block {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+      width: 100%;
+    }
+
+    /* Чередование: нечётные – row, чётные – row-reverse */
+    .content-block:not(.last-block):nth-child(odd) {
+      flex-direction: row;
+    }
+    .content-block:not(.last-block):nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    /* Изображение (185px), отступ 20px */
+    .image-wrapper {
+      flex: 0 0 auto;
+      text-align: center;
+      margin: 0 20px;
+    }
+
+    .portrait {
+      display: block;
+      margin-bottom: 5px;
+      max-width: 185px; /* не больше 185px */
+      height: auto;
+    }
+
+    .year-label {
+      text-align: center;
+      margin: 0 auto;
+      width: 60px;
+    }
+    .year-label img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Текст */
+    .text-wrapper {
+      flex: 1;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    /* Зелёная линия */
+    .green-line {
+      display: block;
+      margin-top: 15px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Жёлтая линия (если нужна в блоках 1–5) */
+    .gold-line {
+      display: block;
+      margin-top: 5px;
+      width: 100%;
+      height: auto;
+    }
+
+    /***************************************************
+     *   БЛОК 6 (ПОСЛЕДНИЙ) – ВЕРТИКАЛЬНО
+     ***************************************************/
+    .last-block {
+      display: flex;
+      flex-direction: column !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gold-line-fullwidth {
+      display: block;
+      width: 320px;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 10px auto;
+    }
+
+    .last-block .image-wrapper {
+      width: 225px;
+      margin: 0 auto 10px auto;
+      text-align: center;
+    }
+    .last-block .portrait {
+      max-width: 225px;
+      height: auto;
+    }
+
+    .last-block .text-wrapper {
+      max-width: 250px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    /***************************************************
+     *                     ПОДВАЛ
+     ***************************************************/
+    .page-footer {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    /***************************************************
+     *   АДАПТИВНОСТЬ (МАЛЕНЬКИЕ ЭКРАНЫ)
+     ***************************************************/
+    @media (max-width: 480px) {
+      /* Контейнер сжимается */
+      .page-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 0 10px 20px; /* Уменьшаем боковой padding, если нужно */
+      }
+
+      /* Увеличиваем «внутренний» размер шапки чуть меньше, 
+         чтобы лавры «влезли» */
+      .header-inner {
+        width: 240px; /* вместо 264px */
+      }
+
+      /* Лавры большие, но сдвигаем их чуть внутрь */
+      .laurel-left,
+      .laurel-right {
+        width: 130px;  /* большие */
+        height: 130px;
+        top: -30px;    /* чуток выше */
+      }
+      .laurel-left {
+        left: -50px;   /* вместо -70px, подбирайте под вкус */
+      }
+      .laurel-right {
+        right: -50px;
+      }
+
+      /* Горизонтальное расположение блоков (не column) */
+      .content-block:not(.last-block) {
+        flex-direction: row;
+      }
+
+      /* Картинка ~30% */
+      .content-block:not(.last-block) .image-wrapper {
+        flex: 0 0 30%;
+        margin: 0 3%;
+      }
+      /* Картинка не растягивается выше своего размера */
+      .content-block:not(.last-block) .portrait {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Текст ~64% */
+      .content-block:not(.last-block) .text-wrapper {
+        flex: 0 0 64%;
+        margin-top: 0;
+      }
+
+      .green-line,
+      .gold-line {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Страница первого раздела</h1>
+  <div class="page-container">
+    <!-- ШАПКА -->
+    <header class="page-header">
+      <div class="header-inner">
+        <h1 class="header-title">
+          Ранние годы.<br>
+          Становление изобретателем
+        </h1>
+        <!-- Лавровые ветви (большие) -->
+        <img src="img/laurel_left.png" alt="Лавр слева" class="laurel-left">
+        <img src="img/laurel_right.png" alt="Лавр справа" class="laurel-right">
+      </div>
+      <img src="img/gold_divider.png" alt="Жёлтая линия" class="gold-line-top">
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>
+      <!-- Пример блоков (1–6) -->
+      <!-- Блок 1 -->
+      <section class="content-block">
+        <div class="image-wrapper">
+          <img src="img/baby.png" alt="Портрет ребёнка" class="portrait">
+          <div class="year-label">
+            <img src="img/1735.png" alt="1735 год">
+          </div>
+        </div>
+        <div class="text-wrapper">
+          <p>
+            И.А. Кулибин родился в семье мещанина, зарабатывавшего на жизнь торговлей мукой. 
+            Отец был старообрядцем, который воспитывал детей в строгости и послушании.
+          </p>
+          <img src="img/green_divider.png" alt="Зелёная линия" class="green-line">
+        </div>
+      </section>
+
+      <!-- Блок 2 -->
+      <section class="content-block">
+        <div class="image-wrapper">
+          <img src="img/workshop.png" alt="Мастерская" class="portrait">
+          <div class="year-label">
+            <img src="img/1752.png" alt="1752 год">
+          </div>
+        </div>
+        <div class="text-wrapper">
+          <p>
+            В 17 лет Кулибин впервые увидел настоящие часы у соседа. Он выпросил их 
+            и попытался скопировать механизм, но не смог. Позже, побывав с отцом в Москве, 
+            он купил испорченную машинку для нарезки шестерёнок и токарный станок. 
+            Дома Кулибин починил их и начал учиться делать свои часы.
+          </p>
+          <img src="img/green_divider.png" alt="Зелёная линия" class="green-line">
+        </div>
+      </section>
+
+      <!-- Блок 3 -->
+      <section class="content-block">
+        <div class="image-wrapper">
+          <img src="img/city.png" alt="Нижний Новгород" class="portrait">
+          <div class="year-label">
+            <img src="img/1758.png" alt="1758 год">
+          </div>
+        </div>
+        <div class="text-wrapper">
+          <p>
+            После смерти отца в 1758 году Иван Кулибин открыл в Нижнем Новгороде 
+            часовую мастерскую. Свободное время он посвящал изобретению различных устройств: 
+            механических игрушек для детей и взрослых, сложных часовых механизмов.
+          </p>
+          <img src="img/green_divider.png" alt="Зелёная линия" class="green-line">
+        </div>
+      </section>
+
+      <!-- Блок 4 -->
+      <section class="content-block">
+        <div class="image-wrapper">
+          <img src="img/egg.png" alt="Часы в форме яйца" class="portrait">
+          <div class="year-label">
+            <img src="img/1764.png" alt="1764 год">
+          </div>
+        </div>
+        <div class="text-wrapper">
+          <p>
+            В 1764 году Кулибин создал уникальные часы в форме яйца, оснащенные сложным 
+            механизмом, демонстрирующим различные астрономические явления. Эти часы 
+            произвели огромное впечатление на нижегородского губернатора, который 
+            представил их императрице Екатерине II.
+          </p>
+          <img src="img/green_divider.png" alt="Зелёная линия" class="green-line">
+        </div>
+      </section>
+
+      <!-- Блок 5 -->
+      <section class="content-block">
+        <div class="image-wrapper">
+          <img src="img/academy.png" alt="Петербургская Академия Наук" class="portrait">
+          <div class="year-label">
+            <img src="img/1769.png" alt="1769 год">
+          </div>
+        </div>
+        <div class="text-wrapper">
+          <p>
+            Императрица высоко оценила талант Кулибина и пригласила его в Санкт-Петербург, 
+            где в 1769 году он был назначен заведующим механической мастерской 
+            Петербургской Академии Наук.
+          </p>
+        </div>
+      </section>
+
+      <!-- Блок 6 (последний) -->
+      <section class="content-block last-block">
+        <img src="img/gold_divider.png" alt="Жёлтая линия" class="gold-line-fullwidth">
+        <div class="image-wrapper">
+          <img src="img/inventions.png" alt="Портрет старика" class="portrait">
+        </div>
+        <div class="text-wrapper">
+          <p>
+            Назначение Кулибина заведующим механической мастерской стало отправной точкой 
+            для его плодотворной деятельности в области науки и техники. Он занимался 
+            разработкой и усовершенствованием различных приборов и механизмов, внеся 
+            значительный вклад в развитие русского приборостроения.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="page-footer">
+      <!-- Дополнительная информация -->
+    </footer>
+  </div>
 </body>
 </html>
