@@ -5,10 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Кулибин Иван Петрович</title>
   <style>
+    @font-face {
+      font-family: 'Monotype Corsiva';
+      src: url('fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'Georgia';
+      src: url('fonts/Georgia/georgia.ttf') format('truetype');
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: Georgia, serif;
+      font-family: "Georgia", serif;
       background-image: url("images/9.jpg");
       background-size: cover;
       background-repeat: no-repeat;
@@ -25,43 +35,51 @@
     .title {
       font-family: "Monotype Corsiva", cursive;
       font-size: 36px;
-      font-weight: bold;
-      color: #7a4e2d;
+      color: #8B3A3A;
       margin-bottom: 5px; 
     }
 
     /* Даты и фотография */
     .dates-container {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       max-width: 400px;
       margin: 0 auto 5px auto; 
     }
 
     .date-block {
+      position: absolute;
+      width: 82%;
       font-family: "Monotype Corsiva", cursive;
       font-size: 22px;
-      color: #7a4e2d;
+      color: #2E2E2E;
       font-style: italic;
       line-height: 1.2;
       text-align: center;
+      transition: transform 0.6s ease-out;
+      z-index: 1;
+    }
+
+    .date-right {
+      right: 0;
+      transform: translateX(0%);
+    }
+
+    .date-left {
+      left: 0;
+      transform: translateX(0%);
     }
 
     .date-block div {
-      margin: 1px 0; 
+      margin: 1px 0;
     }
 
     .image-container {
       position: relative;
       width: 200px;
       height: 200px;
-      margin: 2px auto; 
-      border-radius: 50%;
-      border: 8px solid #7a4e2d;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      background-color: #ddd;
-      overflow: hidden;
+      overflow: visible;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -73,6 +91,7 @@
       object-fit: cover;
       border-radius: 50%;
       display: block;
+      z-index: 2;
     }
 
     /* Основной блок с текстом */
@@ -141,10 +160,9 @@
       box-sizing: border-box;       /* Учитываем паддинги, если будут */
       font-family: "Monotype Corsiva", cursive;
       font-size: clamp(16px, 5vw, 40px); /* Минимум 16px, максимум 40px */
-      color: #c1735d;
+      color: #8B3A3A;
       cursor: pointer;
       text-align: center;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
       transition: 0.2s ease;
       font-weight: 700;
       letter-spacing: 1px;
@@ -155,7 +173,7 @@
 
     .pressable-text:active {
       transform: translate(-50%, -50%) scale(0.97);
-      text-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.4);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
@@ -178,26 +196,24 @@
     </div>
 
     <div class="dates-container">
-      <div class="date-block">
-        <div>1735</div>
-        <div>21&nbsp;апреля</div>
-      </div>
       <div class="image-container">
-        <img 
-          src="images/4.jpg"
+        <div class="date-block date-left">
+          1735<br>21&nbsp;апреля
+        </div>
+        <img
+          src="images/4.png"
           alt="Кулибин Иван Петрович"
           class="image"
         />
-      </div>
-      <div class="date-block">
-        <div>1818</div>
-        <div>11&nbsp;августа</div>
+        <div class="date-block date-right">
+            1818<br>11&nbsp;августа
+        </div>
       </div>
     </div>
 
     <div class="content">
-      <p>Русский изобретатель и механик XVIII века, опередивший свое время. Без формального образования он самостоятельно освоил механику, создавая сложные часовые механизмы, мосты и подъемные устройства.</p>
-      <p>Его самоходный экипаж и разработки в судостроении, транспорте и оптике предвосхитили достижения промышленной революции. Многие идеи, включая световые системы для маяков, значительно опередили эпоху.</p>
+      <p>Русский изобретатель и механик <em>XVIII</em> века, опередивший свое время. Без формального образования он самостоятельно освоил механику, создавая сложные часовые механизмы, мосты и подъемные устройства.</p>
+      <p>Его самоходный экипаж и разработки в судостроении, транспорте и оптике предвосхитили достижения промышленной революции. Многие идеи, включая световые системы для маяков, значительно <strong>опередили эпоху</strong>.</p>
       <p>Помимо инженерии, Кулибин увлекался живописью и музыкой, оставив богатый архив чертежей. Несмотря на отсутствие признания при жизни, его изобретения оказали огромное влияние на развитие науки и техники.
       <img 
         src="images/7.png"
@@ -206,7 +222,7 @@
       />
        Чтобы лучше понять его путь, нужно вернуться в начало.</p>
       <p>Туда, где всё зарождалось в юность будущего изобретателя, полную любопытства и первых открытий.</p>
-      <p>Мы окунемся в мир его гениальных творений, изменивших представление о возможностях механики.</p>
+      <p>Мы окунемся в <em>мир</em> его гениальных творений, изменивших представление о возможностях механики.</p>
       <p>А в завершение посмотрим на эпоху, в которой он жил, — время великих перемен, сложных вызовов и нераскрытых возможностей.</p>
     </div>
 
@@ -228,28 +244,6 @@
       </div>
     </div>
   </div>
+  <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
