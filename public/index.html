@@ -171,9 +171,7 @@
       }
 
       /* Стили для слайдера */
-      /* Стили для слайдера */
       .high-slider {
-        margin: 20px 0;
         text-align: center;
       }
 
@@ -185,8 +183,9 @@
 
       .rotator {
         display: flex;
+        row-gap: 10px;
         transition: transform 0.5s ease-out;
-        width: 150%; /* Увеличиваем ширину для двух слайдов */
+        width: 100%; /* Увеличиваем ширину для двух слайдов */
       }
 
       .rotator > li {
@@ -199,9 +198,9 @@
       }
 
       .rotator img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
+        width: 100%; /* Растягиваем изображение по ширине контейнера */
+        height: 400px; /* Фиксируем высоту */
+        object-fit: cover; /* Обрезаем лишнее, сохраняя пропорции */
       }
 
       .rotator > li:hover > div {
@@ -242,19 +241,22 @@
         }
 
         .rotator > li {
-          flex: 0 0 50%; /* Каждый слайд занимает 50% ширины контейнера */
-          margin-right: 5px;
+          flex: 0 0 40%; /* Каждый слайд занимает 50% ширины контейнера */
         }
 
         .rotator img {
-          height: 300px; /* Фиксированная высота для мобильных устройств */
+          height: 100px; /* Фиксированная высота для мобильных устройств */
         }
       }
 
       /* Альбомный режим на мобильных устройствах */
-      @media only screen and (max-width: 520px) and (orientation: landscape) {
+      @media only screen and (max-width: 1000px) and (orientation: landscape) {
+        .rotator {
+          animation: slide_mobile 15s infinite ease-out forwards;
+        }
+
         .rotator img {
-          height: 600px; /* Увеличиваем высоту для альбомного режима */
+          height: 300px; /* Уменьшаем высоту, чтобы помещалось в экран */
         }
       }
     </style>
