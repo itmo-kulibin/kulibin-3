@@ -31,7 +31,8 @@
       .container {
         max-width: 900px;
         margin: 5px auto;
-        padding: 10px;
+        /* padding: 10px; */
+        overflow-x: hidden;
       }
 
       .title {
@@ -116,7 +117,7 @@
         max-width: 100%;
         height: auto;
         display: block;
-        margin: 0 auto !important;
+        margin: 0 auto !important; /* Remove top margin to move closer to slider */
       }
 
       .footer-block {
@@ -176,21 +177,21 @@
       }
 
       .high-slider-title {
-        font-size: 24px;
+        font-family: "Monotype Corsiva", cursive;
+        font-weight: bold;
+        font-size: 36px;
         color: #8b3a3a;
         margin-bottom: 20px;
       }
 
       .rotator {
+         padding: 0;
         display: flex;
-        row-gap: 10px;
-        transition: transform 0.5s ease-out;
-        width: 100%; /* Увеличиваем ширину для двух слайдов */
+        width: 100%; /* Adjust width based on the number of slides */
       }
 
       .rotator > li {
-        flex: 0 0 50%; /* Каждый слайд занимает 50% ширины контейнера */
-        padding: 5px;
+        flex: 0 0 50%;
         list-style: none;
         display: flex;
         align-items: center;
@@ -198,158 +199,80 @@
       }
 
       .rotator img {
-        width: 100%; /* Растягиваем изображение по ширине контейнера */
-        height: 400px; /* Фиксируем высоту */
-        object-fit: cover; /* Обрезаем лишнее, сохраняя пропорции */
+         max-width: min(275px, 45vw);
       }
 
       .rotator > li:hover > div {
         box-shadow: 0 20px 15px -10px rgba(0, 0, 0, 0.3);
       }
-
-      /* Анимация для мобильных устройств */
-      @keyframes slide_mobile {
-        0%,
-        10% {
-          transform: translateX(0);
-        }
-        14%,
-        31% {
-          transform: translateX(-50%);
-        }
-        35%,
-        52% {
-          transform: translateX(-100%);
-        }
-        56%,
-        73% {
-          transform: translateX(-150%);
-        }
-        77%,
-        94% {
-          transform: translateX(-200%);
-        }
-        98%,
-        100% {
-          transform: translateX(-250%);
-        }
-      }
-
-      @media only screen and (max-width: 520px) {
-        .rotator {
-          animation: slide_mobile 15s infinite ease-out forwards;
-        }
-
-        .rotator > li {
-          flex: 0 0 40%; /* Каждый слайд занимает 50% ширины контейнера */
-        }
-
-        .rotator img {
-          height: 100px; /* Фиксированная высота для мобильных устройств */
-        }
-      }
-
-      /* Альбомный режим на мобильных устройствах */
-      @media only screen and (max-width: 1000px) and (orientation: landscape) {
-        .rotator {
-          animation: slide_mobile 15s infinite ease-out forwards;
-        }
-
-        .rotator img {
-          height: 300px; /* Уменьшаем высоту, чтобы помещалось в экран */
-        }
-      }
     </style>
   </head>
-  <body>
-    <section class="high-slider">
-      <h2 class="high-slider-title">Великие изобретения</h2>
+<body>
+   <div class="container">
+     <section class="high-slider"></section>
+      <h2 class="high-slider-title">Великие открытия</h2>
       <div class="rotator-wrap">
         <ul class="rotator">
           <li>
             <div>
-              <img
-                src="img/slider/getimg_ai_img-CyhxpfhhiEOlSVjLKUOEs.jpeg"
-                alt="Речное судно с вододействующим двигателем, передвигающееся против течения"
-              />
+            <img
+              src="img/slider/Boat.png"
+              alt="Речное судно с вододействующим двигателем, передвигающееся против течения"
+            />
             </div>
           </li>
           <li>
             <div>
-              <img
-                src="img/slider/getimg_ai_img-G1d6FBPoAarKNa6McawUf.jpeg"
-                alt="Многофункциональные карманные часы"
-              />
+            <img
+              src="img/slider/Clock.png"
+              alt="Многофункциональные карманные часы"
+            />
             </div>
           </li>
           <li>
             <div>
-              <img
-                src="img/slider/getimg_ai_img-jjwgufQVsZ6rQlJBQA0kP.jpeg"
-                alt="Прожектор"
-              />
+            <img
+              src="img/slider/Lamp.png"
+              alt="Прожектор"
+            />
             </div>
           </li>
           <li>
             <div>
-              <img
-                src="img/slider/getimg_ai_img-zP9Iz22JMXUXO8HEXsPSA.jpeg"
-                alt="Лифт"
-              />
+            <img
+              src="img/slider/Elevator.png"
+              alt="Лифт"
+            />
             </div>
           </li>
           <li>
             <div>
-              <img
-                src="img/slider/getimg_ai_img-6BQ5c6xye9TQMtSVTxGCX.jpeg"
-                alt="Проект однопролётного стационарного моста через Неву"
-              />
+            <img
+              src="img/slider/Bridge.png"
+              alt="Проект однопролётного стационарного моста через Неву"
+            />
             </div>
           </li>
           <li>
             <div>
-              <img
-                src="img/slider/getimg_ai_img-CyhxpfhhiEOlSVjLKUOEs.jpeg"
-                alt="Речное судно с вододействующим двигателем, передвигающееся против течения"
-              />
+             <img
+               src="img/slider/Boat.png"
+               alt="Речное судно с вододействующим двигателем, передвигающееся против течения"
+             />
             </div>
-          </li>
-          <li>
+           </li>
+           <li>
             <div>
-              <img
-                src="img/slider/getimg_ai_img-G1d6FBPoAarKNa6McawUf.jpeg"
-                alt="Многофункциональные карманные часы"
-              />
+             <img
+               src="img/slider/Clock.png"
+               alt="Многофункциональные карманные часы"
+             />
             </div>
           </li>
-          <li>
-            <div>
-              <img
-                src="img/slider/getimg_ai_img-jjwgufQVsZ6rQlJBQA0kP.jpeg"
-                alt="Прожектор"
-              />
-            </div>
-          </li>
-          <li>
-            <div>
-              <img
-                src="img/slider/getimg_ai_img-zP9Iz22JMXUXO8HEXsPSA.jpeg"
-                alt="Лифт"
-              />
-            </div>
-          </li>
-          <li>
-            <div>
-              <img
-                src="img/slider/getimg_ai_img-6BQ5c6xye9TQMtSVTxGCX.jpeg"
-                alt="Проект однопролётного стационарного моста через Неву"
-              />
-            </div>
-          </li>
-        </ul>
       </div>
-    </section>
-    <div class="container">
+     </section>
+   </div>
+   </section>
       <!-- ВЕРХНЯЯ КАРТИНКА -->
       <div>
         <img
