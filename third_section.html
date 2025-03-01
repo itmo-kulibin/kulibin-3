@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>И.А. Кулибин</title>
+  <style>
+    /***************************************************
+     *                СБРОС СТИЛЕЙ
+     ***************************************************/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /***************************************************
+     *            БАЗОВЫЕ НАСТРОЙКИ
+     ***************************************************/
+    body {
+      background: url("img/first/bg.png") no-repeat center center;
+      background-size: cover;
+      font-family: Georgia, serif;
+      font-size: 12px;
+      line-height: 16.5px;
+      color: #000;
+    }
+
+    /* Контейнер: добавляем padding для «воздуха» */
+    .page-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 0 15px 20px; /* отступы слева/справа, а также снизу */
+      position: relative;
+    }
+
+    /***************************************************
+     *                     ШАПКА
+     ***************************************************/
+    .page-header {
+      text-align: center;
+      position: relative;
+      /* Увеличим немного padding сверху, чтобы лавры и заголовок 
+         не были вплотную к верхнему краю */
+      padding: 60px 0 20px;
+      margin-bottom: 0;
+    }
+
+    .header-inner {
+      /* Ширина 264px для текста, 
+         но учтите, что мы добавили padding контейнеру */
+      width: 264px;
+      height: 54px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Заголовок (Monotype Corsiva, 26px, italic, #8B3A3A) */
+    .header-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: "Monotype Corsiva", cursive;
+      font-size: 26px;
+      line-height: 29.17px;
+      font-weight: 400;
+      font-style: italic;
+      color: #8B3A3A;
+    }
+
+    /* Лавровые ветви: большие (130×130) */
+    .laurel-left,
+    .laurel-right {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      top: -40px;
+    }
+    .laurel-left {
+      /* Смещаем чуть меньше влево, чтобы не обрезалось */
+      left: -70px; /* было -90px */
+    }
+    .laurel-right {
+      right: -70px; /* было -90px */
+    }
+
+    /* Золотая линия под заголовком (320px) */
+    .gold-line-top {
+      display: block;
+      width: 320px;
+      max-width: 100%;
+      height: auto;
+      margin: 30px auto 0;
+    }
+
+    /***************************************************
+     *           БЛОК
+     ***************************************************/
+    
+
+    .content-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 100%;
+    }
+
+    .image-wrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .portrait {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .text-wrapper {
+        width: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    .text-wrapper h2 {
+        font-family: 'Monotype Corsiva', cursive;
+        font-size: 22px;
+        font-weight: 400; /* Убрана жирность */
+        padding-bottom: 10px; /* Уменьшено расстояние между заголовком и текстом */
+    }
+
+    .text-wrapper p {
+        font-family: Georgia, serif; /* Основной текст шрифтом Georgia */
+        text-align: left;
+        font-size: 12px;
+        line-height: 16.5px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .gear {
+        position: absolute;
+        bottom: -5px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5)); /* Тень для маленьких экранов */
+    }
+
+    p {
+        margin-top: 5px; /* Отступ сверху */
+        margin-bottom: 5px; /* Отступ снизу */
+    }
+
+    p :first-child {
+        margin-top: 0;
+    }
+
+    /***************************************************
+     *                     ПОДВАЛ
+     ***************************************************/
+    .page-footer {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    /***************************************************
+     *   АДАПТИВНОСТЬ (МАЛЕНЬКИЕ ЭКРАНЫ)
+     ***************************************************/
+    @media (max-width: 480px) {
+      /* Контейнер сжимается */
+      .page-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 0 10px 20px; /* Уменьшаем боковой padding, если нужно */
+      }
+
+      /* Увеличиваем «внутренний» размер шапки чуть меньше, 
+         чтобы лавры «влезли» */
+      .header-inner {
+        width: 200px; /* вместо 264px */
+      }
+
+      /* Лавры большие, но сдвигаем их чуть внутрь */
+      .laurel-left,
+      .laurel-right {
+        width: 130px;  /* большие */
+        height: 130px;
+        top: -30px;    /* чуток выше */
+      }
+      .laurel-left {
+        left: -70px;   /* вместо -70px, подбирайте под вкус */
+      }
+      .laurel-right {
+        right: -70px;
+      }
+
+      /* Горизонтальное расположение блоков (не column) */
+      .content-block:not(.last-block) {
+        flex-direction: column;
+      }
+
+      /* Картинка ~30% */
+      .content-block:not(.last-block) .image-wrapper {
+        flex: 0 0 30%;
+        margin: 0 3%;
+      }
+      /* Картинка не растягивается выше своего размера */
+      .content-block:not(.last-block) .portrait {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Текст ~64% */
+      .content-block:not(.last-block) .text-wrapper {
+        flex: 0 0 64%;
+        margin-top: 0;
+      }
+
+      .green-line,
+      .gold-line {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="page-container">
+    <!-- ШАПКА -->
+    <header class="page-header">
+      <div class="header-inner">
+        <h1 class="header-title">
+          Влияние и наследие <br>
+          эпохи Кулибина
+        </h1>
+        <!-- Лавровые ветви (большие) -->
+        <img/first src="img/third/laurel_left.png" alt="Лавр слева" class="laurel-left">
+        <img/first src="img/third/laurel_right.png" alt="Лавр справа" class="laurel-right">
+      </div>
+      <img/first src="img/third/gold_divider.png" alt="Жёлтая линия" class="gold-line-top">
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>
+      <!-- Блок -->
+      <section class="content-block">
+        <div class="image-wrapper">
+            <img src="img/third/kulibin-portrait.png" alt="Портрет Кулибина" class="portrait">
+            <img src="img/third/gear.png" alt="Шестеренка" class="gear">
+        </div>
+        <div class="text-wrapper">
+            <p class="first-child">
+                Иван Кулибин, талантливый русский механик и изобретатель, оставил неизгладимый след в истории техники и культуры России. Его жизнь и творчество, пришедшиеся на эпоху Просвещения, стали символом гения изобретательства и преданности науке.
+            </p>
+            <p>
+                Кулибин продемонстрировал выдающийся технический потенциал России. Его изобретения, отличавшиеся оригинальностью и новаторским подходом, охватывали широкий спектр областей, от часового дела и оптики до мостостроения и водоходного транспорта. Он показал, что русские мастера способны создавать сложные механизмы, не уступающие, а зачастую и превосходящие европейские аналоги.
+            </p>
+            <p>
+                Его техническое наследие служит ценным источником вдохновения для современных исследователей. Чертежи и модели Кулибина демонстрируют смелые инженерные решения, предвосхитившие многие будущие достижения. Его идеи, хоть и не всегда получившие широкое применение при его жизни, заложили основу для развития российской инженерной мысли.
+            </p>
+            <p>
+                Имя Кулибина стало символом изобретательности, упорного труда и веры в силу человеческого разума. Его жизнь – пример для всех, кто стремится к инновациям и прогрессу. Его работы способствовали развитию интереса к техническим наукам и повышению престижа инженерной профессии в России.
+            </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="page-footer">
+      <!-- Дополнительная информация -->
+    </footer>
+  </div>
+</body>
+</html>
