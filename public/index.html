@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Кулибин Иван Петрович</title>
+    <style>
+      /* Общие стили */
+      @font-face {
+        font-family: "Monotype Corsiva";
+        src: url("fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf")
+          format("truetype");
+      }
+
+      @font-face {
+        font-family: "Georgia";
+        src: url("fonts/Georgia/georgia.ttf") format("truetype");
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Georgia", serif;
+        background-image: url("img/index/9.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 5px auto;
+        /* padding: 10px; */
+        overflow-x: hidden;
+      }
+
+      .title {
+        font-family: "Monotype Corsiva", cursive;
+        font-size: 36px;
+        color: #8b3a3a;
+        margin-bottom: 5px;
+      }
+
+      .dates-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+        margin: 0 auto 5px auto;
+      }
+
+      .date-block {
+        position: absolute;
+        width: 82%;
+        font-family: "Monotype Corsiva", cursive;
+        font-size: 22px;
+        color: #2e2e2e;
+        font-style: italic;
+        line-height: 1.2;
+        text-align: center;
+        transition: transform 0.6s ease-out;
+        z-index: 1;
+      }
+
+      .date-right {
+        right: 0;
+        transform: translateX(0%);
+      }
+
+      .date-left {
+        left: 0;
+        transform: translateX(0%);
+      }
+
+      .date-block div {
+        margin: 1px 0;
+      }
+
+      .image-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        overflow: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+        z-index: 2;
+      }
+
+      .content {
+        width: 600px;
+        max-width: 100%;
+        margin: 2px auto;
+        text-align: center;
+        font-size: 20px;
+        color: #333;
+        line-height: 1.3;
+        white-space: pre-line;
+      }
+
+      .content p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .decor-image {
+        width: 600px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto !important; /* Remove top margin to move closer to slider */
+      }
+
+      .footer-block {
+        margin-top: 5px;
+      }
+
+      .final-image-container {
+        position: relative;
+        display: inline-block;
+        width: 60%;
+        margin: 0 auto;
+      }
+
+      .final-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .stamp-overlay {
+        position: absolute;
+        left: 5%;
+        bottom: 5%;
+        width: 20%;
+        height: auto;
+        pointer-events: none;
+      }
+
+      .pressable-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        box-sizing: border-box;
+        font-family: "Monotype Corsiva", cursive;
+        font-size: clamp(16px, 5vw, 40px);
+        color: #8b3a3a;
+        cursor: pointer;
+        text-align: center;
+        transition: 0.2s ease;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 1.2;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+
+      .pressable-text:active {
+        transform: translate(-50%, -50%) scale(0.97);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Стили для слайдера */
+      .high-slider {
+        text-align: center;
+      }
+
+      .high-slider-title {
+        font-family: "Monotype Corsiva", cursive;
+        font-weight: bold;
+        font-size: 36px;
+        color: #8b3a3a;
+        margin-bottom: 20px;
+      }
+
+      .rotator {
+         padding: 0;
+        display: flex;
+        width: 100%; /* Adjust width based on the number of slides */
+      }
+
+      .rotator > li {
+        flex: 0 0 50%;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .rotator img {
+         max-width: min(275px, 45vw);
+      }
+
+      .rotator > li:hover > div {
+        box-shadow: 0 20px 15px -10px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+<body>
+   <div class="container">
+     <section class="high-slider"></section>
+      <h2 class="high-slider-title">Великие открытия</h2>
+      <div class="rotator-wrap">
+        <ul class="rotator">
+          <li>
+            <div>
+            <img
+              src="img/slider/Boat.png"
+              alt="Речное судно с вододействующим двигателем, передвигающееся против течения"
+            />
+            </div>
+          </li>
+          <li>
+            <div>
+            <img
+              src="img/slider/Clock.png"
+              alt="Многофункциональные карманные часы"
+            />
+            </div>
+          </li>
+          <li>
+            <div>
+            <img
+              src="img/slider/Lamp.png"
+              alt="Прожектор"
+            />
+            </div>
+          </li>
+          <li>
+            <div>
+            <img
+              src="img/slider/Elevator.png"
+              alt="Лифт"
+            />
+            </div>
+          </li>
+          <li>
+            <div>
+            <img
+              src="img/slider/Bridge.png"
+              alt="Проект однопролётного стационарного моста через Неву"
+            />
+            </div>
+          </li>
+          <li>
+            <div>
+             <img
+               src="img/slider/Boat.png"
+               alt="Речное судно с вододействующим двигателем, передвигающееся против течения"
+             />
+            </div>
+           </li>
+           <li>
+            <div>
+             <img
+               src="img/slider/Clock.png"
+               alt="Многофункциональные карманные часы"
+             />
+            </div>
+          </li>
+      </div>
+     </section>
+   </div>
+   </section>
+      <!-- ВЕРХНЯЯ КАРТИНКА -->
+      <div>
+        <img
+          src="img/index/8.png"
+          alt="Украшение над именем"
+          class="decor-image"
+        />
+      </div>
+
+      <!-- Фамилия наверху, имя и отчество внизу -->
+      <div class="title">
+        Кулибин<br />
+        Иван Петрович
+      </div>
+
+      <div class="dates-container">
+        <div class="image-container">
+          <div class="date-block date-left">1735<br />21&nbsp;апреля</div>
+          <img
+            src="img/index/4.png"
+            alt="Кулибин Иван Петрович"
+            class="image"
+          />
+          <div class="date-block date-right">1818<br />11&nbsp;августа</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <p>
+          Русский изобретатель и механик <em>XVIII</em> века, опередивший свое
+          время. Без формального образования он самостоятельно освоил механику,
+          создавая сложные часовые механизмы, мосты и подъемные устройства.
+        </p>
+        <p>
+          Его самоходный экипаж и разработки в судостроении, транспорте и оптике
+          предвосхитили достижения промышленной революции. Многие идеи, включая
+          световые системы для маяков, значительно
+          <strong>опередили эпоху</strong>.
+        </p>
+        <p>
+          Помимо инженерии, Кулибин увлекался живописью и музыкой, оставив
+          богатый архив чертежей. Несмотря на отсутствие признания при жизни,
+          его изобретения оказали огромное влияние на развитие науки и техники.
+          <img src="img/index/7.png" alt="Разделитель" class="decor-image" />
+          Чтобы лучше понять его путь, нужно вернуться в начало.
+        </p>
+        <p>
+          Туда, где всё зарождалось в юность будущего изобретателя, полную
+          любопытства и первых открытий.
+        </p>
+        <p>
+          Мы окунемся в <em>мир</em> его гениальных творений, изменивших
+          представление о возможностях механики.
+        </p>
+        <p>
+          А в завершение посмотрим на эпоху, в которой он жил, — время великих
+          перемен, сложных вызовов и нераскрытых возможностей.
+        </p>
+      </div>
+
+      <div class="footer-block">
+        <div class="final-image-container">
+          <img src="img/index/6.png" alt="Пергамент" class="final-image" />
+          <img src="img/index/5.png" alt="Печать" class="stamp-overlay" />
+          <div class="pressable-text">Вы готовы начать путешествие?</div>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
