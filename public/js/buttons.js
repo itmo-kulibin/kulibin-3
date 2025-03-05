@@ -59,23 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  backButton.addEventListener('click', () => {
-    createSplashes(backButton);
-    setTimeout(() => {
-      window.history.back();
-    }, 1000);
-  });
+//   backButton.addEventListener('click', () => {
+//     createSplashes(backButton);
+//     setTimeout(() => {
+//       window.history.back();
+//     }, 1000);
+//   });
 
-  nextButton.addEventListener('click', () => {
-    createSplashes(nextButton);
-    setTimeout(() => {
-      alert("Переходим дальше...");
-    }, 1000);
-  });
+//   nextButton.addEventListener('click', () => {
+//     createSplashes(nextButton);
+//     setTimeout(() => {
+//       alert("Переходим дальше...");
+//     }, 1000);
+//   });
 
   window.addEventListener('resize', () => {
     document.querySelectorAll('.ink-splash').forEach(splash => splash.remove());
     backButton.dataset.animating = "false";
     nextButton.dataset.animating = "false";
   });
+
+  // Make createSplashes available globally
+  window.createSplashes = createSplashes;
 });

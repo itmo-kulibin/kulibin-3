@@ -374,11 +374,17 @@
 </div>
 <script>
   document.getElementById('backButton').addEventListener('click', () => {
-    window.location.href = "first_section.html";
+    createSplashes(backButton);
+    setTimeout(() => {
+      window.location.href = "first_section.html";
+    }, 1500); // Ensure the animation plays out before navigating
   });
 
   document.getElementById('nextButton').addEventListener('click', () => {
-    window.location.href = "third_section.html";
+    createSplashes(nextButton);
+    setTimeout(() => {
+      window.location.href = "third_section.html";
+    }, 1500); // Ensure the animation plays out before navigating
   });
 </script>
 <script src="js/buttons.js"></script>
