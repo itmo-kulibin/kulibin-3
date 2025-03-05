@@ -2,15 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const backButton = document.getElementById('backButton');
   const nextButton = document.getElementById('nextButton');
 
-  const backText = document.getElementById('backText');
-  const nextText = document.getElementById('nextText');
-
   function createSplashes(buttonElem) {
     if (buttonElem.dataset.animating === "true") return;
     buttonElem.dataset.animating = "true";
 
     const numSplashes = Math.floor(Math.random() * 2) + 2;
     const splashDelay = 300;
+    const usedPositions = [];
 
     function makeSplash(i) {
       const splash = document.createElement('div');
@@ -19,15 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const rect = buttonElem.getBoundingClientRect();
       const btnWidth  = rect.width;
       const btnHeight = rect.height;
-      const splashSize = splash.offsetWidth; // Get splash size from CSS
 
-      let offsetX;
-      if (Math.random() < 0.5) {
-        offsetX = Math.random() * (0.15 * btnWidth);
-      } else {
-        offsetX = btnWidth - splashSize - Math.random() * (0.15 * btnWidth);
-      }
-      const offsetY = 0.1 * btnHeight + Math.random() * (btnHeight - splashSize - 0.3 * btnHeight);
+      document.body.appendChild(splash);
+      const splashSize = parseFloat(getComputedStyle(splash).width);
+      document.body.removeChild(splash);
+
+      let offsetX, offsetY;
+      let attempts = 0;
+      do {
+        if (Math.random() < 0.5) {
+          offsetX = Math.random() * (0.15 * btnWidth);
+        } else {
+          offsetX = btnWidth - splashSize - Math.random() * (0.15 * btnWidth);
+        }
+        offsetY = 0.1 * btnHeight + Math.random() * (btnHeight - splashSize - 0.3 * btnHeight);
+        attempts++;
+      } while (usedPositions.some(pos => Math.abs(pos.x - offsetX) < splashSize && Math.abs(pos.y - offsetY) < splashSize) && attempts < 10);
+
+      usedPositions.push({ x: offsetX, y: offsetY });
 
       splash.style.left = offsetX + 'px';
       splash.style.top  = offsetY + 'px';
