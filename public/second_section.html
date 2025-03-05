@@ -182,6 +182,80 @@
                 right: -50px;
             }
         }
+
+        #buttons-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .paper-btn {
+            width: 50%;
+            position: relative;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .paper-btn .paper-bg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .btn-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Georgia, serif;
+            font-size: clamp(16px, 3vw, 18px); /* Make font size adaptive */
+            color: #8B4513;
+            pointer-events: none;
+            text-shadow:
+                1px 1px 0 #4f3217,
+                -1px -1px 0 #fff;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        .paper-btn:active .btn-text {
+            transform: translate(-50%, -50%) scale(0.95);
+            text-shadow:
+                -1px -1px 0 #4f3217,
+                1px 1px 0 #fff;
+        }
+
+        .ink-splash {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            max-width: 100%;
+            max-height: 100%;
+            background: url("img/buttom/13.png") no-repeat center/contain;
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0.5) rotate(0deg);
+            animation: splashFade 0.5s forwards;
+        }
+
+        @keyframes splashFade {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(15deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -286,6 +360,27 @@
             </div>
         </section>
     </main>
+    <div id="buttons-container">
+      <button class="paper-btn" id="backButton">
+          <img src="img/buttom/16.png" alt="Пергамент" class="paper-bg">
+          <span class="btn-text" id="backText">Вернуться</span>
+      </button>
+  
+      <button class="paper-btn" id="nextButton">
+          <img src="img/buttom/16.png" alt="Пергамент" class="paper-bg">
+          <span class="btn-text" id="nextText">Продолжить</span>
+      </button>
+  </div>
 </div>
+<script>
+  document.getElementById('backButton').addEventListener('click', () => {
+    window.location.href = "first_section.html";
+  });
+
+  document.getElementById('nextButton').addEventListener('click', () => {
+    window.location.href = "third_section.html";
+  });
+</script>
+<script src="js/buttons.js"></script>
 </body>
 </html>
