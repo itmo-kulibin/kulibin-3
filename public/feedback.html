@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оценить работу</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @font-face {
+        font-family: "Monotype Corsiva";
+        src: url("fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf")
+          format("truetype");
+      }
+      body {
+        background: url("img/first/bg.png") no-repeat center center;
+        background-size: cover;
+        font-family: Monotype Corsiva, serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        height: 80%;
+        width: 100%;
+        max-width: 450px;
+        border-radius: 10px;
+      }
+
+      .title {
+        color: #8b0000;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .image-container img {
+        width: 100%;
+        border-radius: 30px;
+      }
+
+      .text {
+        font-size: 20px;
+        color: #000;
+        margin: 15px 0;
+      }
+
+      .footer-block {
+        margin-top: 5px;
+      }
+
+      .feedback-image-container {
+        position: relative;
+        display: inline-block;
+        width: 60%;
+        margin: 0 auto;
+      }
+
+      .feedback-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .stamp-overlay {
+        position: absolute;
+        left: 5%;
+        bottom: 5%;
+        width: 20%;
+        height: auto;
+        pointer-events: none;
+      }
+      .pressable-text {
+        color: #8b3a3a;
+        font-size: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        box-sizing: border-box;
+        font-family: "Monotype Corsiva", cursive;
+      }
+      .site-link {
+        display: block;
+        font-size: 24px;
+        color: #195744;
+        text-decoration: none;
+        margin-top: 150px;
+      }
+
+      /* Адаптивность для мобильных устройств */
+      @media (max-width: 480px) {
+        body {
+          background-size: cover;
+          background-position: center;
+        }
+
+        .container {
+          padding: 10px;
+        }
+
+        .title {
+          font-size: 22px;
+        }
+
+        .text {
+          font-size: 16px;
+        }
+
+        .evaluate-btn {
+          width: 180px;
+          font-size: 18px;
+        }
+
+        .site-link {
+          font-size: 16px;
+        }
+      }
+
+      #modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      #modal {
+        background-color: #d9d9d9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 500px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+      }
+      .team-title {
+        font-size: 15px;
+        color: #000;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      /* Стили для членов команды */
+      .team-member {
+        font-size: 15px;
+        color: #000;
+        margin: 10px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .team-member::before {
+        content: "•";
+        color: #000;
+        font-size: 15px;
+        position: absolute;
+        left: 0;
+        top: -2px;
+      }
+
+      /* Стили для заголовка руководителя */
+      .project-leader-title {
+        font-size: 15px;
+        color: #000;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      /* Стили для руководителя проекта */
+      .project-leader {
+        font-size: 15px;
+        color: #000;
+        text-align: center;
+        font-style: italic;
+        margin-bottom: 30px;
+      }
+
+      /* Стили для блока контактов */
+      .contact-info {
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      /* Стили для заголовка контактов */
+      .contact-title {
+        font-size: 22px;
+        color: #000;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      /* Стили для контакта разработчика */
+      .developer-contact {
+        font-size: 16px;
+        color: #000;
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      /* Стили для контакта руководителя */
+      .leader-contact {
+        font-size: 16px;
+        color: #000;
+        margin: 10px 0;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">На этом путешествие<br />подошло к концу!</h1>
+      <div class="image-container">
+        <img src="./img/feedback/image.png" />
+      </div>
+      <p class="text">
+        Мы будем очень признательны, если<br />
+        Вы найдете время честно оценить<br />
+        данную работу!
+      </p>
+      <div class="footer-block">
+        <div class="feedback-image-container">
+          <img src="img/index/6.png" alt="Пергамент" class="feedback-image" />
+          <img src="img/index/5.png" alt="Печать" class="stamp-overlay" />
+          <div class="pressable-text">Оценить</div>
+        </div>
+      </div>
+      <a href="#" class="site-link">О сайте</a>
+    </div>
+
+    <div id="modal-overlay">
+      <div id="modal">
+        <h1 class="team-title">
+          Работу выполнила команда студентов Университета ИТМО:
+        </h1>
+        <p class="team-member">Лабин Макар</p>
+        <p class="team-member">Лищук Андрей</p>
+        <p class="team-member">Мавлявиев Эрик</p>
+        <p class="team-member">Данилова Айвана</p>
+        <p class="team-member">Баренкий Максим</p>
+        <p class="team-member">Попов Глеб</p>
+        <p class="team-member">Кретов Иван</p>
+        <p class="team-member">Лебедев Артем</p>
+
+        <h1 class="project-leader-title">
+          Организатор и руководитель проекта:
+        </h1>
+        <p class="project-leader">
+          преподаватель центра социальных и гуманитарных наук Кудина Юлия
+          Игоревна
+        </p>
+
+        <div class="contact-info">
+          <h1 class="contact-title">
+            За дополнительной информацией по проделанной работе можете
+            обращаться по следующим контактам:
+          </h1>
+          <p class="developer-contact">
+            Ведущий разработчик Лабин Макар Андреевич: @re_translate
+          </p>
+          <p class="leader-contact">
+            Руководитель проекта Кудина Юлия Игоревна: @J88588678
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const siteLink = document.querySelector(".site-link");
+        const modalOverlay = document.getElementById("modal-overlay");
+
+        siteLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          modalOverlay.style.display = "flex";
+        });
+
+        modalOverlay.addEventListener("click", function (event) {
+          if (event.target === modalOverlay) {
+            modalOverlay.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
