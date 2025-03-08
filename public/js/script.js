@@ -8,16 +8,25 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", () => {
     const leftText = document.querySelector(".date-left");
     const rightText = document.querySelector(".date-right");
+    const highSliderTitle = document.querySelector(".high-slider-title");
 
     let lastScrollY = window.scrollY;
 
     window.addEventListener("scroll", () => {
-        let scrollDirection = window.scrollY > lastScrollY ? "down" : "up";
-        lastScrollY = window.scrollY;
+        const highSliderTitleRect = highSliderTitle.getBoundingClientRect();
+        const isAboveTitle = highSliderTitleRect.top < 0;
 
-        if (scrollDirection === "down" || scrollDirection === "up") {
-            leftText.style.transform = "translateX(100%)";
-            rightText.style.transform = "translateX(-100%)";
+        if (isAboveTitle) {
+            let scrollDirection = window.scrollY > lastScrollY ? "down" : "up";
+            lastScrollY = window.scrollY;
+
+            if (scrollDirection === "down" || scrollDirection === "up") {
+                leftText.style.transform = "translateX(100%)";
+                rightText.style.transform = "translateX(-100%)";
+            }
+        } else {
+            leftText.style.transform = "translateX(0%)";
+            rightText.style.transform = "translateX(0%)";
         }
     });
 
