@@ -31,7 +31,7 @@
             width: 100%;
             max-width: 400px; /* Фиксированная ширина контейнера */
             margin: 0 auto;
-            padding: 0 15px 20px; /* отступы слева/справа, а также снизу */
+            padding: 0 10px 20px; /* отступы слева/справа, а также снизу */
             position: relative;
         }
 
@@ -55,7 +55,7 @@
         }
 
         .header-inner {
-            width: 264px;
+            width: 240px;
             height: 54px;
             margin: 0 auto;
             position: relative;
@@ -79,13 +79,13 @@
             position: absolute;
             width: 130px;
             height: 130px;
-            top: -40px;
+            top: -30px;
         }
         .laurel-left {
-            left: -70px;
+            left: -50px;
         }
         .laurel-right {
-            right: -70px;
+            right: -50px;
             transform: scaleX(-1); /* Mirror the left laurel */
         }
 
@@ -154,34 +154,6 @@
             width: 45px;
             height: 45px;
             filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5)); /* Тень для маленьких экранов */
-        }
-
-        /***************************************************
-         *   АДАПТИВНОСТЬ (МАЛЕНЬКИЕ ЭКРАНЫ)
-         ***************************************************/
-        @media (max-width: 480px) {
-            .page-container {
-                width: 100%;
-                max-width: 400px;
-                padding: 0 10px 20px;
-            }
-
-            .header-inner {
-                width: 240px;
-            }
-
-            .laurel-left,
-            .laurel-right {
-                width: 130px;
-                height: 130px;
-                top: -30px;
-            }
-            .laurel-left {
-                left: -50px;
-            }
-            .laurel-right {
-                right: -50px;
-            }
         }
 
         #buttons-container {

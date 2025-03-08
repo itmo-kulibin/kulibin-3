@@ -31,7 +31,7 @@
       width: 100%;
       max-width: 400px;
       margin: 0 auto;
-      padding: 0 15px 20px; /* отступы слева/справа, а также снизу */
+      padding: 0 10px 20px; /* отступы слева/справа, а также снизу */
       position: relative;
     }
 
@@ -50,7 +50,7 @@
     .header-inner {
       /* Ширина 264px для текста, 
          но учтите, что мы добавили padding контейнеру */
-      width: 264px;
+      width: 240px;
       height: 54px;
       margin: 0 auto;
       position: relative;
@@ -76,7 +76,7 @@
       position: absolute;
       width: 130px;
       height: 130px;
-      top: -40px;
+      top: -30px;
     }
     .laurel-left {
       /* Смещаем чуть меньше влево, чтобы не обрезалось */
@@ -108,6 +108,27 @@
         position: relative;
         width: 100%;
     }
+
+    .content-block:not(.last-block) {
+        flex-direction: column;
+      }
+
+      /* Картинка ~30% */
+      .content-block:not(.last-block) .image-wrapper {
+        flex: 0 0 30%;
+        margin: 0 3%;
+      }
+      /* Картинка не растягивается выше своего размера */
+      .content-block:not(.last-block) .portrait {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Текст ~64% */
+      .content-block:not(.last-block) .text-wrapper {
+        flex: 0 0 64%;
+        margin-top: 0;
+      }
 
     .image-wrapper {
         width: 100%;
@@ -170,65 +191,6 @@
     .page-footer {
       text-align: center;
       padding: 10px 0;
-    }
-
-    /***************************************************
-     *   АДАПТИВНОСТЬ (МАЛЕНЬКИЕ ЭКРАНЫ)
-     ***************************************************/
-    @media (max-width: 480px) {
-      /* Контейнер сжимается */
-      .page-container {
-        width: 100%;
-        max-width: 400px;
-        padding: 0 10px 20px; /* Уменьшаем боковой padding, если нужно */
-      }
-
-      /* Увеличиваем «внутренний» размер шапки чуть меньше, 
-         чтобы лавры «влезли» */
-      .header-inner {
-        width: 200px; /* вместо 264px */
-      }
-
-      /* Лавры большие, но сдвигаем их чуть внутрь */
-      .laurel-left,
-      .laurel-right {
-        width: 130px;  /* большие */
-        height: 130px;
-        top: -30px;    /* чуток выше */
-      }
-      .laurel-left {
-        left: -70px;   /* вместо -70px, подбирайте под вкус */
-      }
-      .laurel-right {
-        right: -70px;
-      }
-
-      /* Горизонтальное расположение блоков (не column) */
-      .content-block:not(.last-block) {
-        flex-direction: column;
-      }
-
-      /* Картинка ~30% */
-      .content-block:not(.last-block) .image-wrapper {
-        flex: 0 0 30%;
-        margin: 0 3%;
-      }
-      /* Картинка не растягивается выше своего размера */
-      .content-block:not(.last-block) .portrait {
-        max-width: 100%;
-        height: auto;
-      }
-
-      /* Текст ~64% */
-      .content-block:not(.last-block) .text-wrapper {
-        flex: 0 0 64%;
-        margin-top: 0;
-      }
-
-      .green-line,
-      .gold-line {
-        width: 100%;
-      }
     }
 
     #buttons-container {
