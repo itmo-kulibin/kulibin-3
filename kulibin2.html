@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Главная страница</title>
+  <!-- Для адаптивности на мобильных -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0; 
+      padding: 0;
+      background: #ccc; /* просто для наглядности */
+    }
+
+    /* Полупрозрачная подложка */
+    .ai-popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      display: none; /* изначально скрыто */
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 9999;
+    }
+
+    /* Контейнер анимации (рука выезжает слева) */
+    .ai-popup-content {
+      position: absolute;
+      /* Поднимаем выше, например на 30% (вместо 40%) */
+      top: 30%;
+      left: 0;
+      /* Уводим за левый край, чтобы «выезжала» */
+      transform: translate(-100vw, -50%);
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      background: transparent; 
+      border: none; 
+      padding: 0;
+    }
+
+    /* Контейнер для картинки и текста:
+       Уменьшаем диапазон (чтобы всё было меньше):
+       - минимум 250px
+       - ~25% ширины экрана
+       - максимум 450px
+    */
+    .hand-leaf-container {
+      position: relative;
+      display: inline-block;
+      width: clamp(250px, 25vw, 450px);
+      height: auto;
+    }
+
+    /* Картинка «рука с листом» */
+    .ai-popup-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Текст поверх «листка» */
+    .ai-popup-text {
+      position: absolute;
+      /* Координаты примерно в центре белого поля */
+      top: 40%;
+      left: 65%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      /*
+        Уменьшаем шрифт:
+        - минимум 14px
+        - 1.8vw по умолчанию
+        - максимум 20px
+      */
+      font-size: clamp(14px, 1.8vw, 20px);
+      line-height: 1.3;
+      color: #000;
+      text-align: center;
+      /* Для отладки:
+         background: rgba(255, 0, 0, 0.2); */
+    }
+
+    /* Анимация «выезда» слева → вправо */
+    @keyframes slideIn {
+      0% {
+        transform: translate(-100vw, -50%);
+      }
+      100% {
+        transform: translate(0, -50%);
+      }
+    }
+
+    /* Анимация «уезда» обратно вправо → влево */
+    @keyframes slideOut {
+      0% {
+        transform: translate(0, -50%);
+      }
+      100% {
+        transform: translate(-100vw, -50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="ai-popup" class="ai-popup">
+    <div class="ai-popup-content">
+      <div class="hand-leaf-container">
+        <!-- Подставьте путь к вашей картинке -->
+        <img src="hand-leaf.png" alt="Рука с листом" class="ai-popup-image" />
+        <p class="ai-popup-text">
+          Данный сайт сделан<br>
+          с использованием<br>
+          искусственного интеллекта
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function() {
+      const popup = document.getElementById('ai-popup');
+      const popupContent = popup.querySelector('.ai-popup-content');
+
+      // Показываем pop-up
+      popup.style.display = 'block';
+
+      // Запускаем анимацию "выезда" через 0.5с
+      setTimeout(() => {
+        popupContent.style.animationName = 'slideIn';
+      }, 500);
+
+      // Через 4с - "уезд"
+      setTimeout(() => {
+        popupContent.style.animationName = 'slideOut';
+      }, 4500);
+
+      // Ещё через 1с (5.5с всего) - скрываем
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 5500);
+    };
+  </script>
+</body>
+</html>
