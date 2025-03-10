@@ -1,0 +1,24 @@
+{
+  "name": "elevator-website",
+  "version": "1.0.0",
+  "description": "A simple elevator-style website with smooth scrolling sections.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "elevator",
+    "website",
+    "scroll",
+    "smooth-scroll"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Великие изобретения И.А. Кулибина</title>
+    <style>
+        /***************************************************
+         *                СБРОС СТИЛЕЙ
+         ***************************************************/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /***************************************************
+         *            БАЗОВЫЕ НАСТРОЙКИ
+         ***************************************************/
+        body {
+            background: url("img/first/bg.png") no-repeat center center;
+            background-size: cover;
+            font-family: Georgia, serif;
+            font-size: 12px;
+            line-height: 16.5px;
+            color: #000;
+        }
+
+        /* Контейнер: добавляем padding для «воздуха» */
+        .page-container {
+            width: 100%;
+            max-width: 400px; /* Фиксированная ширина контейнера */
+            margin: 0 auto;
+            padding: 0 15px 20px; /* отступы слева/справа, а также снизу */
+            position: relative;
+        }
+
+        @font-face {
+            font-family: 'Monotype Corsiva';
+            src: url('fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Georgia';
+            src: url('fonts/Georgia/georgia.ttf') format('truetype');
+        }
+
+        /***************************************************
+         *                     ШАПКА
+         ***************************************************/
+        .page-header {
+            text-align: center;
+            position: relative;
+            padding: 60px 0 10px;
+        }
+
+        .header-inner {
+            width: 264px;
+            height: 54px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: "Monotype Corsiva", cursive;
+            font-size: 26px;
+            line-height: 29.17px;
+            font-weight: 400;
+            font-style: italic;
+            color: #8B3A3A;
+        }
+
+        .laurel-left,
+        .laurel-right {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            top: -40px;
+        }
+        .laurel-left {
+            left: -70px;
+        }
+        .laurel-right {
+            right: -70px;
+        }
+
+        .gold-line-top {
+            display: block;
+            width: 320px;
+            max-width: 100%;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+        }
+
+        /***************************************************
+         *           БЛОКИ 1–5 (ЧЕРЕДОВАНИЕ)
+         ***************************************************/
+        .content-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            position: relative;
+        }
+
+        .portrait {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .text-wrapper {
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .text-wrapper h2 {
+            font-family: 'Monotype Corsiva', cursive;
+            font-size: 22px;
+            font-weight: 400; /* Убрана жирность */
+            padding-bottom: 10px; /* Уменьшено расстояние между заголовком и текстом */
+        }
+
+        .text-wrapper p {
+            font-family: Georgia, serif; /* Основной текст шрифтом Georgia */
+            text-align: left;
+            font-size: 12px;
+            line-height: 16.5px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .gear {
+            position: absolute;
+            top: -5px;
+            right: 10px;
+            width: 45px;
+            height: 45px;
+            filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5)); /* Тень для маленьких экранов */
+        }
+
+        /***************************************************
+         *   АДАПТИВНОСТЬ (МАЛЕНЬКИЕ ЭКРАНЫ)
+         ***************************************************/
+        @media (max-width: 480px) {
+            .page-container {
+                width: 100%;
+                max-width: 400px;
+                padding: 0 10px 20px;
+            }
+
+            .header-inner {
+                width: 240px;
+            }
+
+            .laurel-left,
+            .laurel-right {
+                width: 130px;
+                height: 130px;
+                top: -30px;
+            }
+            .laurel-left {
+                left: -50px;
+            }
+            .laurel-right {
+                right: -50px;
+            }
+        }
+
+        #buttons-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .paper-btn {
+            width: 50%;
+            position: relative;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .paper-btn .paper-bg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .btn-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Georgia, serif;
+            font-size: clamp(16px, 3vw, 18px); /* Make font size adaptive */
+            color: #8B4513;
+            pointer-events: none;
+            text-shadow:
+                1px 1px 0 #4f3217,
+                -1px -1px 0 #fff;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        .paper-btn:active .btn-text {
+            transform: translate(-50%, -50%) scale(0.95);
+            text-shadow:
+                -1px -1px 0 #4f3217,
+                1px 1px 0 #fff;
+        }
+
+        .ink-splash {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            max-width: 100%;
+            max-height: 100%;
+            background: url("img/buttom/13.png") no-repeat center/contain;
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0.5) rotate(0deg);
+            animation: splashFade 0.5s forwards;
+        }
+
+        @keyframes splashFade {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(15deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-container">
+    <!-- ШАПКА -->
+    <header class="page-header">
+        <div class="header-inner">
+            <h1 class="header-title">
+                Великие изобретения<br>
+                И.А. Кулибина
+            </h1>
+            <!-- Лавровые ветви (большие) -->
+            <img src="img/first/laurel_left.png" alt="Лавр слева" class="laurel-left">
+            <img src="img/first/laurel_right.png" alt="Лавр справа" class="laurel-right">
+        </div>
+        <img src="img/second/gold_line.png" alt="Жёлтая линия" class="gold-line-top">
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main>
+        <!-- Блок 1: Одноарочный мост -->
+        <section class="content-block">
+            <div class="text-wrapper">
+                <h2>Одноарочный мост</h2>
+                <p>
+                    В конце XVIII века Кулибин задумал одноарочный мост через Неву длиной 300 метров. Чтобы проверить идею, он создал уменьшенную деревянную модель, которую установили в Таврическом саду. Хотя мост так и не построили, Кулибин вошел в историю как новатор, впервые применивший моделирование в мостостроении.
+                </p>
+            </div>
+            <div class="image-wrapper">
+                <img src="img/second/bridge.png" alt="Мост" class="portrait">
+                <img src="img/second/gear.png" alt="Шестеренка" class="gear">
+            </div>
+        </section>
+
+        <!-- Блок 2: Винтовой лифт -->
+        <section class="content-block">
+            <div class="text-wrapper">
+                <h2>Винтовой лифт</h2>
+                <p>
+                    Винтовой лифт, разработанный Иваном Петровичем Кулибиным, является еще одним примером его гениальности и способности предвидеть будущее. Созданный в конце XVIII века, этот лифт представлял собой новаторское решение для вертикального перемещения людей и грузов, и предвосхитил появление современных лифтовых систем.
+                </p>
+            </div>
+            <div class="image-wrapper">
+                <img src="img/second/elevator.png" alt="Винтовой лифт" class="portrait">
+                <img src="img/second/gear.png" alt="Шестеренка" class="gear">
+            </div>
+        </section>
+
+        <!-- Блок 3: Самокатная повозка -->
+        <section class="content-block">
+            <div class="text-wrapper">
+                <h2>Самокатная повозка</h2>
+                <p>
+                    В конце XVIII века, когда о машинах, не требующих лошадей, почти не думали, русский изобретатель Иван Кулибин создал удивительную самодвижущуюся повозку. Вместо упряжки он использовал педали, которые вращал человек. Но главное – этот экипаж был оснащён передовыми для того времени устройствами: коробкой передач, тормозами и маховиком. Кулибинская трёхколёсная коляска, по сути, стала прообразом автомобиля, опередив изобретение Карла Бенца.
+                </p>
+            </div>
+            <div class="image-wrapper">
+                <img src="img/second/carriage.png" alt="Самокатная повозка" class="portrait">
+                <img src="img/second/gear.png" alt="Шестеренка" class="gear">
+            </div>
+        </section>
+
+        <!-- Блок 4: Водоход -->
+        <section class="content-block">
+            <div class="text-wrapper">
+                <h2>Водоход</h2>
+                <p>
+                    Водоход - одно из самых знаменитых и новаторских изобретений Ивана Петровича Кулибина, созданное им в конце 18 века. Этот проект представлял собой судно, способное двигаться против течения реки без использования парусов или бурлацкой тяги, что было настоящим прорывом для того времени.
+                </p>
+            </div>
+            <div class="image-wrapper">
+                <img src="img/second/boat.png" alt="Судно" class="portrait">
+                <img src="img/second/gear.png" alt="Шестеренка" class="gear">
+            </div>
+        </section>
+
+        <!-- Блок 5: Часы в пасхальном яйце -->
+        <section class="content-block">
+            <div class="text-wrapper">
+                <h2>Часы в пасхальном яйце</h2>
+                <p>
+                    В середине 18 века русский изобретатель Иван Кулибин создал необыкновенные часы, которые он планировал подарить Екатерине II. Он заключил сложный часовой механизм в корпус в форме золотого яйца. Это были не просто часы: они умели отбивать время, звонить и даже исполнять мелодии. Но самым удивительным был автоматический театр, встроенный внутрь. Каждый час, словно по волшебству, часы оживали, показывая сцену из Евангелия – Воскресение Иисуса Христа. Механические фигурки ангелов и жён-мироносиц двигались под звуки курантов, прославляя Воскресение. На создание этих самодвижущихся часов, состоящих из 427 деталей, у Кулибина ушло долгих пять лет.
+                </p>
+            </div>
+            <div class="image-wrapper">
+                <img src="img/second/egg_clock.png" alt="Часы в форме яйца" class="portrait">
+                <img src="img/second/gear.png" alt="Шестеренка" class="gear">
+            </div>
+        </section>
+
+        <!-- Блок 6: Протез -->
+        <section class="content-block">
+            <div class="text-wrapper">
+                <h2>Протез</h2>
+                <p>
+                    История создания протеза Кулибина связана с графом Григорием Потемкиным, видным государственным деятелем и фаворитом Екатерины II. В результате ранения, полученного во время русско-турецкой войны, Потемкин лишился ноги. Императрица, желая помочь своему приближенному, обратилась к Кулибину, зная о его выдающихся способностях.
+                </p>
+            </div>
+            <div class="image-wrapper">
+                <img src="img/second/prosthesis.png" alt="Протез" class="portrait">
+                <img src="img/second/gear.png" alt="Шестеренка" class="gear">
+            </div>
+        </section>
+    </main>
+    <div id="buttons-container">
+      <button class="paper-btn" id="backButton">
+          <img src="img/buttom/16.png" alt="Пергамент" class="paper-bg">
+          <span class="btn-text" id="backText">Вернуться</span>
+      </button>
+  
+      <button class="paper-btn" id="nextButton">
+          <img src="img/buttom/16.png" alt="Пергамент" class="paper-bg">
+          <span class="btn-text" id="nextText">Продолжить</span>
+      </button>
+  </div>
+</div>
+<script>
+  document.getElementById('backButton').addEventListener('click', () => {
+    createSplashes(backButton);
+    setTimeout(() => {
+      window.location.href = "first_section.html";
+    }, 1500); // Ensure the animation plays out before navigating
+  });
+
+  document.getElementById('nextButton').addEventListener('click', () => {
+    createSplashes(nextButton);
+    setTimeout(() => {
+      window.location.href = "third_section.html";
+    }, 1500); // Ensure the animation plays out before navigating
+  });
+</script>
+<script src="js/buttons.js"></script>
+</body>
+</html>
