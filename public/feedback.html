@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Оценить работу</title>
-    <link rel="stylesheet" href="styles.css" />
     <style>
       @font-face {
         font-family: "Monotype Corsiva";
@@ -12,16 +11,18 @@
           format("truetype");
       }
       body {
-        background: url("img/first/bg.png") no-repeat center center;
-        background-size: cover;
         font-family: Monotype Corsiva, serif;
         text-align: center;
-        margin: 0;
-        padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-image: url("img/index/9.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh;
       }
 
       .container {
@@ -34,8 +35,9 @@
       .title {
         color: #8b0000;
         font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        line-height: 29.17px;
+        font-weight: 400;
       }
 
       .image-container img {
@@ -74,7 +76,7 @@
         height: auto;
         pointer-events: none;
       }
-      .pressable-text {
+      .pressable-text-survey {
         color: #8b3a3a;
         font-size: 40px;
         position: absolute;
@@ -85,21 +87,73 @@
         box-sizing: border-box;
         font-family: "Monotype Corsiva", cursive;
       }
+
+      .pressable-text-survey:active {
+        transform: translate(-50%, -50%) scale(0.97);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      }
+
       .site-link {
-        display: block;
+        font-family: Georgia, serif;
+        display: inline-block;
         font-size: 24px;
         color: #195744;
         text-decoration: none;
         margin-top: 150px;
+        position: relative;
+        padding: 20px 20px;
+      }
+
+      .site-link::before,
+      .site-link::after,
+      .site-link .corner-top-right,
+      .site-link .corner-bottom-left {
+        content: '';
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        border: 2px solid green;
+        transition: all 0.3s ease;
+      }
+
+      .site-link::before {
+        top: 0;
+        left: 0;
+        border-right: none;
+        border-bottom: none;
+      }
+
+      .site-link::after {
+        bottom: 0;
+        right: 0;
+        border-left: none;
+        border-top: none;
+      }
+
+      .site-link .corner-top-right {
+        top: 0;
+        right: 0;
+        border-left: none;
+        border-bottom: none;
+      }
+
+      .site-link .corner-bottom-left {
+        bottom: 0;
+        left: 0;
+        border-right: none;
+        border-top: none;
+      }
+
+      .site-link.enlarged::before,
+      .site-link.enlarged::after,
+      .site-link.enlarged .corner-top-right,
+      .site-link.enlarged .corner-bottom-left {
+        width: 40px; /* Увеличенный размер */
+        height: 40px; /* Увеличенный размер */
       }
 
       /* Адаптивность для мобильных устройств */
       @media (max-width: 480px) {
-        body {
-          background-size: cover;
-          background-position: center;
-        }
-
         .container {
           padding: 10px;
         }
@@ -110,11 +164,6 @@
 
         .text {
           font-size: 16px;
-        }
-
-        .evaluate-btn {
-          width: 180px;
-          font-size: 18px;
         }
 
         .site-link {
@@ -146,7 +195,10 @@
         font-family: Arial, sans-serif;
         line-height: 1.6;
         margin: 20px;
+        max-height: 80vh;
+        overflow-y: auto;
       }
+
       .team-title {
         font-size: 15px;
         color: #000;
@@ -162,15 +214,6 @@
         margin: 10px 0;
         padding-left: 20px;
         position: relative;
-      }
-
-      .team-member::before {
-        content: "•";
-        color: #000;
-        font-size: 15px;
-        position: absolute;
-        left: 0;
-        top: -2px;
       }
 
       /* Стили для заголовка руководителя */
@@ -222,13 +265,46 @@
         margin: 10px 0;
         text-align: center;
       }
+
+      .header-text{
+        /* Ширина 264px для текста,
+           но учтите, что мы добавили padding контейнеру */
+        width: 264px;
+        height: auto;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .laurel-left,
+      .laurel-right {
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        top: -60px;
+      }
+      .laurel-left {
+        /* Смещаем чуть меньше влево, чтобы не обрезалось */
+        left: -70px; /* было -90px */
+      }
+      .laurel-right {
+        right: -70px; /* было -90px */
+      }
+
+      /* Класс для блокировки прокрутки фона */
+      .no-scroll {
+        overflow: hidden;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1 class="title">На этом путешествие<br />подошло к концу!</h1>
+      <div class="header-text">
+        <p class="title">На этом путешествие<br />подошло к концу!</p>
+        <img src="img/first/laurel_left.png" alt="Лавр слева" class="laurel-left">
+        <img src="img/first/laurel_right.png" alt="Лавр справа" class="laurel-right">
+      </div>
       <div class="image-container">
-        <img src="./img/feedback/image.png" />
+        <img src="./img/feedback/image.png" alt="feedback_image"/>
       </div>
       <p class="text">
         Мы будем очень признательны, если<br />
@@ -239,10 +315,14 @@
         <div class="feedback-image-container">
           <img src="img/index/6.png" alt="Пергамент" class="feedback-image" />
           <img src="img/index/5.png" alt="Печать" class="stamp-overlay" />
-          <div class="pressable-text">Оценить</div>
+          <div class="pressable-text-survey">Оценить</div>
         </div>
       </div>
-      <a href="#" class="site-link">О сайте</a>
+      <a href="#" class="site-link">
+        О сайте
+        <span class="corner-top-right"></span>
+        <span class="corner-bottom-left"></span>
+      </a>
     </div>
 
     <div id="modal-overlay">
@@ -253,8 +333,8 @@
         <p class="team-member">Лабин Макар</p>
         <p class="team-member">Лищук Андрей</p>
         <p class="team-member">Мавлявиев Эрик</p>
-        <p class="team-member">Данилова Айвана</p>
-        <p class="team-member">Баренкий Максим</p>
+        <p class="team-member">Данилова Айаана</p>
+        <p class="team-member">Барецкий Максим</p>
         <p class="team-member">Попов Глеб</p>
         <p class="team-member">Кретов Иван</p>
         <p class="team-member">Лебедев Артем</p>
@@ -263,8 +343,7 @@
           Организатор и руководитель проекта:
         </h1>
         <p class="project-leader">
-          преподаватель центра социальных и гуманитарных наук Кудина Юлия
-          Игоревна
+          Преподаватель центра социальных и гуманитарных наук Кудина Юлия Игоревна
         </p>
 
         <div class="contact-info">
@@ -286,16 +365,32 @@
       document.addEventListener("DOMContentLoaded", function () {
         const siteLink = document.querySelector(".site-link");
         const modalOverlay = document.getElementById("modal-overlay");
+        const body = document.body;
 
         siteLink.addEventListener("click", function (event) {
           event.preventDefault();
+          siteLink.classList.toggle("enlarged");
           modalOverlay.style.display = "flex";
+          body.classList.add("no-scroll");
+
+          setTimeout(() => {
+            siteLink.classList.remove("enlarged");
+          }, 300);
         });
 
         modalOverlay.addEventListener("click", function (event) {
           if (event.target === modalOverlay) {
             modalOverlay.style.display = "none";
+            body.classList.remove("no-scroll");
           }
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const pressableText = document.querySelector(".pressable-text-survey");
+        pressableText.addEventListener("click", function() {
+          window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSdrmEH6zdDXACn22VzeJKzVLtIkSz0TEQEh7XqurxTZjlC1yw/viewform?usp=dialog"; // Укажите здесь путь к вашей новой странице
         });
       });
     </script>
