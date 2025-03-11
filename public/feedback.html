@@ -26,6 +26,7 @@
       }
 
       .container {
+        position: relative;
         height: 80%;
         width: 100%;
         max-width: 450px;
@@ -153,25 +154,6 @@
         height: 40px; /* Увеличенный размер */
       }
 
-      /* Адаптивность для мобильных устройств */
-      @media (max-width: 480px) {
-        .container {
-          padding: 10px;
-        }
-
-        .title {
-          font-size: 22px;
-        }
-
-        .text {
-          font-size: 16px;
-        }
-
-        .site-link {
-          font-size: 16px;
-        }
-      }
-
       #modal-overlay {
         display: none;
         position: fixed;
@@ -267,29 +249,38 @@
         text-align: center;
       }
 
-      .header-text{
-        /* Ширина 264px для текста,
-           но учтите, что мы добавили padding контейнеру */
-        width: 264px;
+      .header-text {
+        position: relative;
+        width: 100%;
         height: auto;
         margin: 0 auto;
-        position: relative;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-
+      .header-title {
+        display: inline-block;
+        font-size: 24px;
+        color: #8b0000;
+        line-height: 29.17px;
+        font-weight: 400;
+        max-width: 75%; /* Wrap to a new line only if it reaches 75% of container width */
+      }
       .laurel-left,
       .laurel-right {
         position: absolute;
         width: 130px;
         height: 130px;
-        top: -60px;
+        top: 50%;
+        transform: translateY(-50%);
       }
       .laurel-left {
-        /* Смещаем чуть меньше влево, чтобы не обрезалось */
-        left: -70px; /* было -90px */
+        left: 0; /* Align to the left border of the page container */
       }
       .laurel-right {
-        right: -70px; /* было -90px */
-        transform: scaleX(-1); /* Mirror the left laurel */
+        right: 0; /* Align to the right border of the page container */
+        transform: translateY(-50%) scaleX(-1); /* Mirror the left laurel */
       }
 
       /* Класс для блокировки прокрутки фона */
@@ -301,8 +292,8 @@
   <body>
     <div class="container">
       <div class="header-text">
-        <p class="title">На этом путешествие<br/>подошло к концу!</p>
         <img src="img/general/laurel_left.png" alt="Лавр слева" class="laurel-left">
+        <p class="header-title">На этом путешествие<br/>подошло к концу!</p>
         <img src="img/general/laurel_left.png" alt="Лавр справа" class="laurel-right">
       </div>
       <div class="image-container">

@@ -33,6 +33,7 @@
             margin: 0 auto;
             padding: 0 10px 20px; /* отступы слева/справа, а также снизу */
             position: relative;
+            overflow-x: hidden; /* Hide horizontal scroll */
         }
 
         @font-face {
@@ -54,24 +55,25 @@
             padding: 60px 0 10px;
         }
 
-        .header-inner {
-            width: 240px;
-            height: 54px;
-            margin: 0 auto;
+        .header-text {
             position: relative;
-        }
-
-        .header-title {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            font-family: "Monotype Corsiva", cursive;
-            font-size: 26px;
+        }
+
+        .header-title {
+            display: inline-block;
+            font-family: "Monotype Corsiva", serif;
+            font-size: 26px; /* Change font size to 26px */
+            color: #8B3A3A; /* Standardize font color */
             line-height: 29.17px;
             font-weight: 400;
-            font-style: italic;
-            color: #8B3A3A;
+            max-width: 75%; /* Wrap to a new line only if it reaches 75% of container width */
         }
 
         .laurel-left,
@@ -79,14 +81,15 @@
             position: absolute;
             width: 130px;
             height: 130px;
-            top: -30px;
+            top: 50%;
+            transform: translateY(-50%);
         }
         .laurel-left {
-            left: -50px;
+            left: -30px; /* Move 30px closer to the left border */
         }
         .laurel-right {
-            right: -50px;
-            transform: scaleX(-1); /* Mirror the left laurel */
+            right: -30px; /* Move 30px closer to the right border */
+            transform: translateY(-50%) scaleX(-1); /* Mirror the left laurel */
         }
 
         .gold-line-top {
@@ -235,13 +238,12 @@
 <div class="page-container">
     <!-- ШАПКА -->
     <header class="page-header">
-        <div class="header-inner">
+        <div class="header-text">
+            <img src="img/general/laurel_left.png" alt="Лавр слева" class="laurel-left">
             <h1 class="header-title">
                 Великие изобретения<br>
                 И.А. Кулибина
             </h1>
-            <!-- Лавровые ветви (большие) -->
-            <img src="img/general/laurel_left.png" alt="Лавр слева" class="laurel-left">
             <img src="img/general/laurel_left.png" alt="Лавр справа" class="laurel-right">
         </div>
         <img src="img/second/gold_line.png" alt="Жёлтая линия" class="gold-line-top">

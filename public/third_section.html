@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>И.А. Кулибин</title>
   <style>
+    @font-face {
+      font-family: "Monotype Corsiva";
+      src: url("fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf") format("truetype");
+    }
     /***************************************************
      *                СБРОС СТИЛЕЙ
      ***************************************************/
@@ -33,6 +37,7 @@
       margin: 0 auto;
       padding: 0 10px 20px; /* отступы слева/справа, а также снизу */
       position: relative;
+      overflow-x: hidden; /* Hide horizontal scroll */
     }
 
     /***************************************************
@@ -56,18 +61,27 @@
       position: relative;
     }
 
-    /* Заголовок (Monotype Corsiva, 26px, italic, #8B3A3A) */
-    .header-title {
+    .header-text {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      font-family: "Monotype Corsiva", cursive;
+    }
+
+    /* Заголовок (Monotype Corsiva, 26px, italic, #8B3A3A) */
+    .header-title {
+      display: inline-block;
+      font-family: "Monotype Corsiva", serif;
       font-size: 26px;
       line-height: 29.17px;
       font-weight: 400;
       font-style: italic;
       color: #8B3A3A;
+      max-width: 75%; /* Wrap to a new line only if it reaches 75% of container width */
     }
 
     /* Лавровые ветви: большие (130×130) */
@@ -76,15 +90,15 @@
       position: absolute;
       width: 130px;
       height: 130px;
-      top: -30px;
+      top: 50%;
+      transform: translateY(-50%);
     }
     .laurel-left {
-      /* Смещаем чуть меньше влево, чтобы не обрезалось */
-      left: -70px; /* было -90px */
+      left: -30px; /* Move 30px closer to the left border */
     }
     .laurel-right {
-      right: -70px; /* было -90px */
-      transform: scaleX(-1); /* Mirror the left laurel */
+      right: -30px; /* Move 30px closer to the right border */
+      transform: translateY(-50%) scaleX(-1); /* Mirror the left laurel */
     }
 
     /* Золотая линия под заголовком (320px) */
@@ -152,7 +166,7 @@
     }
 
     .text-wrapper h2 {
-        font-family: 'Monotype Corsiva', cursive;
+        font-family: 'Monotype Corsiva', serif;
         font-size: 22px;
         font-weight: 400; /* Убрана жирность */
         padding-bottom: 10px; /* Уменьшено расстояние между заголовком и текстом */
@@ -274,13 +288,12 @@
   <div class="page-container">
     <!-- ШАПКА -->
     <header class="page-header">
-      <div class="header-inner">
+      <div class="header-text">
+        <img src="img/general/laurel_left.png" alt="Лавр слева" class="laurel-left">
         <h1 class="header-title">
           Влияние и наследие <br>
           эпохи Кулибина
         </h1>
-        <!-- Лавровые ветви (большие) -->
-        <img src="img/general/laurel_left.png" alt="Лавр слева" class="laurel-left">
         <img src="img/general/laurel_left.png" alt="Лавр справа" class="laurel-right">
       </div>
       <img src="img/third/gold_divider.png" alt="Жёлтая линия" class="gold-line-top">
