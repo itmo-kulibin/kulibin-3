@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>И.А. Кулибин</title>
   <style>
+    @font-face {
+      font-family: "Monotype Corsiva";
+      src: url("fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf") format("truetype");
+    }
     /***************************************************
      *                СБРОС СТИЛЕЙ
      ***************************************************/
@@ -31,8 +35,9 @@
       width: 100%;
       max-width: 400px;
       margin: 0 auto;
-      padding: 0 15px 20px; /* отступы слева/справа, а также снизу */
+      padding: 0 10px 20px; /* отступы слева/справа, а также снизу */
       position: relative;
+      overflow-x: hidden; /* Hide horizontal scroll */
     }
 
     /***************************************************
@@ -50,7 +55,7 @@
     .header-inner {
       /* Ширина 264px для текста, 
          но учтите, что мы добавили padding контейнеру */
-      width: 264px;
+      width: 240px;
       height: 54px;
       margin: 0 auto;
       position: relative;
@@ -62,7 +67,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-family: "Monotype Corsiva", cursive;
+      font-family: "Monotype Corsiva", serif;
       font-size: 26px;
       line-height: 29.17px;
       font-weight: 400;
@@ -76,14 +81,14 @@
       position: absolute;
       width: 130px;
       height: 130px;
-      top: -40px;
+      top: -60px; /* Align with the heading */
     }
     .laurel-left {
-      /* Смещаем чуть меньше влево, чтобы не обрезалось */
-      left: -70px; /* было -90px */
+      left: -65px; /* Align to the left border of the page container */
     }
     .laurel-right {
-      right: -70px; /* было -90px */
+      right: -65px; /* Align to the right border of the page container */
+      transform: scaleX(-1); /* Mirror the left laurel */
     }
 
     /* Золотая линия под заголовком (320px) */
@@ -114,6 +119,28 @@
       flex-direction: row-reverse;
     }
 
+    /* Горизонтальное расположение блоков (не column) */
+    .content-block:not(.last-block) {
+        flex-direction: row;
+      }
+
+      /* Картинка ~30% */
+      .content-block:not(.last-block) .image-wrapper {
+        flex: 0 0 30%;
+        margin: 0 3%;
+      }
+      /* Картинка не растягивается выше своего размера */
+      .content-block:not(.last-block) .portrait {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Текст ~64% */
+      .content-block:not(.last-block) .text-wrapper {
+        flex: 0 0 64%;
+        margin-top: 0;
+      }
+
     /* Изображение (185px), отступ 20px */
     .image-wrapper {
       flex: 0 0 auto;
@@ -128,15 +155,18 @@
       height: auto;
     }
 
-    .year-label {
-      text-align: center;
-      margin: 0 auto;
-      width: 60px;
-    }
-    .year-label img/first {
-      width: 100%;
-      height: auto;
-    }
+   .year-label {
+     text-align: center;
+     margin: 0 auto;
+     width: 50px;
+     padding: 2px;
+     border: 1px solid #2E3E03;
+     border-radius: 10px; /* Add rounded corners */
+     font-family: Georgia, serif;
+     font-style: italic;
+     font-size: 12px;
+     color: #1A1A1A;
+   }
 
     /* Текст */
     .text-wrapper {
@@ -201,65 +231,6 @@
     .page-footer {
       text-align: center;
       padding: 10px 0;
-    }
-
-    /***************************************************
-     *   АДАПТИВНОСТЬ (МАЛЕНЬКИЕ ЭКРАНЫ)
-     ***************************************************/
-    @media (max-width: 480px) {
-      /* Контейнер сжимается */
-      .page-container {
-        width: 100%;
-        max-width: 400px;
-        padding: 0 10px 20px; /* Уменьшаем боковой padding, если нужно */
-      }
-
-      /* Увеличиваем «внутренний» размер шапки чуть меньше, 
-         чтобы лавры «влезли» */
-      .header-inner {
-        width: 240px; /* вместо 264px */
-      }
-
-      /* Лавры большие, но сдвигаем их чуть внутрь */
-      .laurel-left,
-      .laurel-right {
-        width: 130px;  /* большие */
-        height: 130px;
-        top: -30px;    /* чуток выше */
-      }
-      .laurel-left {
-        left: -50px;   /* вместо -70px, подбирайте под вкус */
-      }
-      .laurel-right {
-        right: -50px;
-      }
-
-      /* Горизонтальное расположение блоков (не column) */
-      .content-block:not(.last-block) {
-        flex-direction: row;
-      }
-
-      /* Картинка ~30% */
-      .content-block:not(.last-block) .image-wrapper {
-        flex: 0 0 30%;
-        margin: 0 3%;
-      }
-      /* Картинка не растягивается выше своего размера */
-      .content-block:not(.last-block) .portrait {
-        max-width: 100%;
-        height: auto;
-      }
-
-      /* Текст ~64% */
-      .content-block:not(.last-block) .text-wrapper {
-        flex: 0 0 64%;
-        margin-top: 0;
-      }
-
-      .green-line,
-      .gold-line {
-        width: 100%;
-      }
     }
 
     #buttons-container {
@@ -335,22 +306,56 @@
         transform: scale(1) rotate(0deg);
       }
     }
+
+    .header-text {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-title {
+      display: inline-block;
+      font-family: "Monotype Corsiva", serif;
+      font-size: 26px; /* Change font size to 26px */
+      color: #8B3A3A; /* Standardize font color */
+      line-height: 29.17px;
+      font-weight: 400;
+      max-width: 75%; /* Wrap to a new line only if it reaches 75% of container width */
+    }
+    .laurel-left,
+    .laurel-right {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .laurel-left {
+      left: -30px; /* Move 30px closer to the left border */
+    }
+    .laurel-right {
+      right: -30px; /* Move 30px closer to the right border */
+      transform: translateY(-50%) scaleX(-1); /* Mirror the left laurel */
+    }
   </style>
 </head>
 <body>
   <div class="page-container">
     <!-- ШАПКА -->
     <header class="page-header">
-      <div class="header-inner">
+      <div class="header-text">
+        <img src="img/general/laurel_left.png" alt="Лавр слева" class="laurel-left">
         <h1 class="header-title">
           Ранние годы.<br>
           Становление изобретателем
         </h1>
-        <!-- Лавровые ветви (большие) -->
-        <img/first src="img/first/laurel_left.png" alt="Лавр слева" class="laurel-left">
-        <img/first src="img/first/laurel_right.png" alt="Лавр справа" class="laurel-right">
+        <img src="img/general/laurel_left.png" alt="Лавр справа" class="laurel-right">
       </div>
-      <img/first src="img/first/gold_divider.png" alt="Жёлтая линия" class="gold-line-top">
+      <img src="img/first/gold_divider.png" alt="Жёлтая линия" class="gold-line-top">
     </header>
 
     <!-- ОСНОВНОЙ КОНТЕНТ -->
@@ -360,9 +365,7 @@
       <section class="content-block">
         <div class="image-wrapper">
           <img src="img/first/baby.png" alt="Портрет ребёнка" class="portrait">
-          <div class="year-label">
-            <img src="img/first/1735.png" alt="1735 год">
-          </div>
+          <div class="year-label">1735</div>
         </div>
         <div class="text-wrapper">
           <p>
@@ -377,9 +380,7 @@
       <section class="content-block">
         <div class="image-wrapper">
           <img src="img/first/workshop.png" alt="Мастерская" class="portrait">
-          <div class="year-label">
-            <img src="img/first/1752.png" alt="1752 год">
-          </div>
+          <div class="year-label">1752</div>
         </div>
         <div class="text-wrapper">
           <p>
@@ -396,9 +397,7 @@
       <section class="content-block">
         <div class="image-wrapper">
           <img src="img/first/city.png" alt="Нижний Новгород" class="portrait">
-          <div class="year-label">
-            <img src="img/first/1758.png" alt="1758 год">
-          </div>
+          <div class="year-label">1758</div>
         </div>
         <div class="text-wrapper">
           <p>
@@ -414,9 +413,7 @@
       <section class="content-block">
         <div class="image-wrapper">
           <img src="img/first/egg.png" alt="Часы в форме яйца" class="portrait">
-          <div class="year-label">
-            <img src="img/first/1764.png" alt="1764 год">
-          </div>
+          <div class="year-label">1764</div>
         </div>
         <div class="text-wrapper">
           <p>
@@ -433,9 +430,7 @@
       <section class="content-block">
         <div class="image-wrapper">
           <img src="img/first/academy.png" alt="Петербургская Академия Наук" class="portrait">
-          <div class="year-label">
-            <img src="img/first/1769.png" alt="1769 год">
-          </div>
+          <div class="year-label">1769</div>
         </div>
         <div class="text-wrapper">
           <p>

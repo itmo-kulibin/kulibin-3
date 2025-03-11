@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>И.А. Кулибин</title>
   <style>
+    @font-face {
+      font-family: "Monotype Corsiva";
+      src: url("fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf") format("truetype");
+    }
     /***************************************************
      *                СБРОС СТИЛЕЙ
      ***************************************************/
@@ -31,8 +35,9 @@
       width: 100%;
       max-width: 400px;
       margin: 0 auto;
-      padding: 0 15px 20px; /* отступы слева/справа, а также снизу */
+      padding: 0 10px 20px; /* отступы слева/справа, а также снизу */
       position: relative;
+      overflow-x: hidden; /* Hide horizontal scroll */
     }
 
     /***************************************************
@@ -50,24 +55,33 @@
     .header-inner {
       /* Ширина 264px для текста, 
          но учтите, что мы добавили padding контейнеру */
-      width: 264px;
+      width: 240px;
       height: 54px;
       margin: 0 auto;
       position: relative;
     }
 
-    /* Заголовок (Monotype Corsiva, 26px, italic, #8B3A3A) */
-    .header-title {
+    .header-text {
+      position: relative;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      font-family: "Monotype Corsiva", cursive;
+    }
+
+    /* Заголовок (Monotype Corsiva, 26px, italic, #8B3A3A) */
+    .header-title {
+      display: inline-block;
+      font-family: "Monotype Corsiva", serif;
       font-size: 26px;
       line-height: 29.17px;
       font-weight: 400;
       font-style: italic;
       color: #8B3A3A;
+      max-width: 75%; /* Wrap to a new line only if it reaches 75% of container width */
     }
 
     /* Лавровые ветви: большие (130×130) */
@@ -76,14 +90,15 @@
       position: absolute;
       width: 130px;
       height: 130px;
-      top: -40px;
+      top: 50%;
+      transform: translateY(-50%);
     }
     .laurel-left {
-      /* Смещаем чуть меньше влево, чтобы не обрезалось */
-      left: -70px; /* было -90px */
+      left: -30px; /* Move 30px closer to the left border */
     }
     .laurel-right {
-      right: -70px; /* было -90px */
+      right: -30px; /* Move 30px closer to the right border */
+      transform: translateY(-50%) scaleX(-1); /* Mirror the left laurel */
     }
 
     /* Золотая линия под заголовком (320px) */
@@ -108,6 +123,27 @@
         width: 100%;
     }
 
+    .content-block:not(.last-block) {
+        flex-direction: column;
+      }
+
+      /* Картинка ~30% */
+      .content-block:not(.last-block) .image-wrapper {
+        flex: 0 0 30%;
+        margin: 0 3%;
+      }
+      /* Картинка не растягивается выше своего размера */
+      .content-block:not(.last-block) .portrait {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Текст ~64% */
+      .content-block:not(.last-block) .text-wrapper {
+        flex: 0 0 64%;
+        margin-top: 0;
+      }
+
     .image-wrapper {
         width: 100%;
         position: relative;
@@ -130,7 +166,7 @@
     }
 
     .text-wrapper h2 {
-        font-family: 'Monotype Corsiva', cursive;
+        font-family: 'Monotype Corsiva', serif;
         font-size: 22px;
         font-weight: 400; /* Убрана жирность */
         padding-bottom: 10px; /* Уменьшено расстояние между заголовком и текстом */
@@ -169,65 +205,6 @@
     .page-footer {
       text-align: center;
       padding: 10px 0;
-    }
-
-    /***************************************************
-     *   АДАПТИВНОСТЬ (МАЛЕНЬКИЕ ЭКРАНЫ)
-     ***************************************************/
-    @media (max-width: 480px) {
-      /* Контейнер сжимается */
-      .page-container {
-        width: 100%;
-        max-width: 400px;
-        padding: 0 10px 20px; /* Уменьшаем боковой padding, если нужно */
-      }
-
-      /* Увеличиваем «внутренний» размер шапки чуть меньше, 
-         чтобы лавры «влезли» */
-      .header-inner {
-        width: 200px; /* вместо 264px */
-      }
-
-      /* Лавры большие, но сдвигаем их чуть внутрь */
-      .laurel-left,
-      .laurel-right {
-        width: 130px;  /* большие */
-        height: 130px;
-        top: -30px;    /* чуток выше */
-      }
-      .laurel-left {
-        left: -70px;   /* вместо -70px, подбирайте под вкус */
-      }
-      .laurel-right {
-        right: -70px;
-      }
-
-      /* Горизонтальное расположение блоков (не column) */
-      .content-block:not(.last-block) {
-        flex-direction: column;
-      }
-
-      /* Картинка ~30% */
-      .content-block:not(.last-block) .image-wrapper {
-        flex: 0 0 30%;
-        margin: 0 3%;
-      }
-      /* Картинка не растягивается выше своего размера */
-      .content-block:not(.last-block) .portrait {
-        max-width: 100%;
-        height: auto;
-      }
-
-      /* Текст ~64% */
-      .content-block:not(.last-block) .text-wrapper {
-        flex: 0 0 64%;
-        margin-top: 0;
-      }
-
-      .green-line,
-      .gold-line {
-        width: 100%;
-      }
     }
 
     #buttons-container {
@@ -311,16 +288,15 @@
   <div class="page-container">
     <!-- ШАПКА -->
     <header class="page-header">
-      <div class="header-inner">
+      <div class="header-text">
+        <img src="img/general/laurel_left.png" alt="Лавр слева" class="laurel-left">
         <h1 class="header-title">
           Влияние и наследие <br>
           эпохи Кулибина
         </h1>
-        <!-- Лавровые ветви (большие) -->
-        <img/first src="img/third/laurel_left.png" alt="Лавр слева" class="laurel-left">
-        <img/first src="img/third/laurel_right.png" alt="Лавр справа" class="laurel-right">
+        <img src="img/general/laurel_left.png" alt="Лавр справа" class="laurel-right">
       </div>
-      <img/first src="img/third/gold_divider.png" alt="Жёлтая линия" class="gold-line-top">
+      <img src="img/third/gold_divider.png" alt="Жёлтая линия" class="gold-line-top">
     </header>
 
     <!-- ОСНОВНОЙ КОНТЕНТ -->
@@ -369,7 +345,7 @@
       document.getElementById('nextButton').addEventListener('click', () => {
         createSplashes(nextButton);
         setTimeout(() => {
-          alert("Переходим дальше...");
+          window.location.href = "feedback.html"; // Link to feedback HTML page
         }, 1500); // Ensure the animation plays out before navigating
       });
     </script>
