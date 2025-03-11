@@ -1,0 +1,274 @@
+   @font-face {
+   font-family: "Monotype Corsiva";
+   src: url("../fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf") format("truetype");
+   }
+   /***************************************************
+   *                СБРОС СТИЛЕЙ
+   ***************************************************/
+   * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   }
+
+   /***************************************************
+   *            БАЗОВЫЕ НАСТРОЙКИ
+   ***************************************************/
+   body {
+   background: url("../img/first/bg.png") no-repeat center center;
+   background-size: cover;
+   font-family: Georgia, serif;
+   font-size: 12px;
+   line-height: 16.5px;
+   color: #000;
+   }
+
+   /* Контейнер: добавляем padding для «воздуха» */
+   .page-container {
+   width: 100%;
+   max-width: 400px;
+   margin: 0 auto;
+   padding: 0 10px 20px; /* отступы слева/справа, а также снизу */
+   position: relative;
+   overflow-x: hidden; /* Hide horizontal scroll */
+   }
+
+   /***************************************************
+   *                     ШАПКА
+   ***************************************************/
+   .page-header {
+   text-align: center;
+   position: relative;
+   /* Увеличим немного padding сверху, чтобы лавры и заголовок 
+      не были вплотную к верхнему краю */
+   padding: 60px 0 20px;
+   margin-bottom: 0;
+   }
+
+   .header-inner {
+   /* Ширина 264px для текста, 
+      но учтите, что мы добавили padding контейнеру */
+   width: 240px;
+   height: 54px;
+   margin: 0 auto;
+   position: relative;
+   }
+
+   .header-text {
+   position: relative;
+   width: 100%;
+   height: auto;
+   margin: 0 auto;
+   text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   }
+
+   /* Заголовок (Monotype Corsiva, 26px, italic, #8B3A3A) */
+   .header-title {
+   display: inline-block;
+   font-family: "Monotype Corsiva", serif;
+   font-size: 26px;
+   line-height: 29.17px;
+   font-weight: 400;
+   font-style: italic;
+   color: #8B3A3A;
+   max-width: 75%; /* Wrap to a new line only if it reaches 75% of container width */
+   }
+
+   /* Лавровые ветви: большие (130×130) */
+   .laurel-left,
+   .laurel-right {
+   position: absolute;
+   width: 130px;
+   height: 130px;
+   top: 50%;
+   transform: translateY(-50%);
+   }
+   .laurel-left {
+   left: -30px; /* Move 30px closer to the left border */
+   }
+   .laurel-right {
+   right: -30px; /* Move 30px closer to the right border */
+   transform: translateY(-50%) scaleX(-1); /* Mirror the left laurel */
+   }
+
+   /* Золотая линия под заголовком (320px) */
+   .gold-line-top {
+   display: block;
+   width: 320px;
+   max-width: 100%;
+   height: auto;
+   margin: 30px auto 0;
+   }
+
+   /***************************************************
+   *           БЛОК
+   ***************************************************/
+   
+
+   .content-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+   }
+
+   .content-block:not(.last-block) {
+      flex-direction: column;
+   }
+
+   /* Картинка ~30% */
+   .content-block:not(.last-block) .image-wrapper {
+      flex: 0 0 30%;
+      margin: 0 3%;
+   }
+   /* Картинка не растягивается выше своего размера */
+   .content-block:not(.last-block) .portrait {
+      max-width: 100%;
+      height: auto;
+   }
+
+   /* Текст ~64% */
+   .content-block:not(.last-block) .text-wrapper {
+      flex: 0 0 64%;
+      margin-top: 0;
+   }
+
+   .image-wrapper {
+      width: 100%;
+      position: relative;
+   }
+
+   .portrait {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 0px;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+   }
+
+   .text-wrapper {
+      width: 100%;
+      text-align: center;
+      position: relative;
+   }
+
+   .text-wrapper h2 {
+      font-family: 'Monotype Corsiva', serif;
+      font-size: 22px;
+      font-weight: 400; /* Убрана жирность */
+      padding-bottom: 10px; /* Уменьшено расстояние между заголовком и текстом */
+   }
+
+   .text-wrapper p {
+      font-family: Georgia, serif; /* Основной текст шрифтом Georgia */
+      text-align: left;
+      font-size: 12px;
+      line-height: 16.5px;
+      padding-left: 20px;
+      padding-right: 20px;
+   }
+
+   .gear {
+      position: absolute;
+      bottom: -5px;
+      right: 10px;
+      width: 45px;
+      height: 45px;
+      filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5)); /* Тень для маленьких экранов */
+   }
+
+   p {
+      margin-top: 5px; /* Отступ сверху */
+      margin-bottom: 5px; /* Отступ снизу */
+   }
+
+   p :first-child {
+      margin-top: 0;
+   }
+
+   /***************************************************
+   *                     ПОДВАЛ
+   ***************************************************/
+   .page-footer {
+   text-align: center;
+   padding: 10px 0;
+   }
+
+   #buttons-container {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   gap: 40px;
+   padding: 20px;
+   }
+
+   .paper-btn {
+      width: 50%;
+      position: relative;
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      display: inline-block;
+  }
+  
+  .paper-btn .paper-bg {
+      display: block;
+      width: 100%;
+      height: auto;
+  }
+  
+  .btn-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Monotype Corsiva", "Times New Roman", serif;
+      font-size: clamp(22px, 3vw, 24px); /* Адаптивный размер шрифта */
+      letter-spacing: 0.02em;
+      pointer-events: none;
+      white-space: nowrap; /* Запретить перенос текста */
+      color: transparent; /* Сделать цвет текста прозрачным */
+      -webkit-text-stroke: 0.75px #000; /* Обводка текста для Webkit */
+      stroke: #000; /* Чёрная обводка */
+      stroke-width: 1px;
+      paint-order: stroke fill; /* Сначала обводка, затем заливка */
+  }
+
+   .paper-btn:active .btn-text {
+   transform: translate(-50%, -50%) scale(0.95);
+   }
+
+   .ink-splash {
+   position: absolute;
+   width: 50px;
+   height: 50px;
+   max-width: 100%;
+   max-height: 100%;
+   background: url("../img/buttom/13.png") no-repeat center/contain;
+   pointer-events: none;
+   opacity: 0;
+   transform: scale(0.5) rotate(0deg);
+   animation: splashFade 0.5s forwards;
+   }
+
+   @keyframes splashFade {
+   0% {
+      opacity: 0;
+      transform: scale(0.5) rotate(0deg);
+   }
+   50% {
+      opacity: 1;
+      transform: scale(1.2) rotate(15deg);
+   }
+   100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+   }
+   }
