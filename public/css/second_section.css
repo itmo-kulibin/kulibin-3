@@ -156,12 +156,12 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 40px;
-    padding: 20px;
+    gap: 20px; /* Reduce the gap between buttons */
+    padding: 10px; /* Reduce padding */
 }
 
 .paper-btn {
-    width: 50%;
+    width: 60%; /* Make buttons a little bigger */
     position: relative;
     border: none;
     background: none;
@@ -177,21 +177,21 @@ body {
 }
 
 .btn-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: "Monotype Corsiva", "Times New Roman", serif;
-    font-size: clamp(22px, 3vw, 24px); /* Адаптивный размер шрифта */
-    letter-spacing: 0.02em;
-    pointer-events: none;
-    white-space: nowrap; /* Запретить перенос текста */
-    color: transparent; /* Сделать цвет текста прозрачным */
-    -webkit-text-stroke: 0.75px #000; /* Обводка текста для Webkit */
-    stroke: #000; /* Чёрная обводка */
-    stroke-width: 1px;
-    paint-order: stroke fill; /* Сначала обводка, затем заливка */
-}
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-family: "Monotype Corsiva", "Times New Roman", serif;
+   font-size: clamp(24px, 3.5vw, 26px); /* Increase font size */
+   letter-spacing: 0.02em;
+   pointer-events: none;
+   white-space: nowrap; /* Запретить перенос текста */
+   color: transparent; /* Сделать цвет текста прозрачным */
+   -webkit-text-stroke: 0.75px #000; /* Обводка текста для Webkit */
+   stroke: #000; /* Чёрная обводка */
+   stroke-width: 1px;
+   paint-order: stroke fill; /* Сначала обводка, затем заливка */
+ }
 
 .paper-btn:active .btn-text {
     transform: translate(-50%, -50%) scale(0.95);
