@@ -81,7 +81,6 @@
         position: relative;
         width: 200px;
         height: 200px;
-        overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -312,5 +311,13 @@
        </div>
    </div>
     <script src="js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const pressableText = document.querySelector(".pressable-text");
+        pressableText.addEventListener("click", function() {
+          window.location.href = "first_section.html"; // Укажите здесь путь к вашей новой странице
+        });
+      });
+    </script>
   </body>
 </html>
