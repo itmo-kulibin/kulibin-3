@@ -51,8 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
    }
 
-   sliderInterval = setTimeout(rotateSlides, 2500); // Start the automatic slider after 2.5 seconds
-
    window.onload = function() {
       const popup = document.getElementById('ai-popup');
       const popupContent = popup.querySelector('.ai-popup-content');
