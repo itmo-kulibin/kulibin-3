@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    function rotateSlides() {
       currentIndex++;
-      if (currentIndex == totalSlides - 1) {
+      if (currentIndex >= totalSlides - 1) {
          currentIndex = 0;
          rotator.style.transition = "none"; // Disable transition for instant reset
          rotator.style.transform = `translateX(-${currentIndex * 50}%)`;
@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
          rotator.style.transition = "transform 0.5s ease-in-out"; // Smooth transition for slide change
          rotator.style.transform = `translateX(-${currentIndex * 50}%)`;
-         sliderInterval = setTimeout(rotateSlides, 2500); // Wait 2.5 seconds before rotating to the next slide
+         sliderInterval = setTimeout(rotateSlides, 4000); // Wait 4 seconds before rotating to the next slide
       }
    }
 
-   sliderInterval = setTimeout(rotateSlides, 2500); // Start the automatic slider after 2.5 seconds
+   // sliderInterval = setTimeout(rotateSlides, 4000); // Start the automatic slider after 4 seconds
 
    window.onload = function() {
       const popup = document.getElementById('ai-popup');
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Check if the user has already seen the popup
       if (localStorage.getItem('popupSeen') === 'true') {
-          sliderInterval = setTimeout(rotateSlides, 2500); // Restart the slider
+          sliderInterval = setTimeout(rotateSlides, 3000); // Restart the slider
           return;
       }
 
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const hidePopupTimeout = setTimeout(() => {
           popup.style.display = 'none';
           localStorage.setItem('popupSeen', 'true'); // Mark the popup as seen
-          sliderInterval = setTimeout(rotateSlides, 2500); // Restart the slider
+          sliderInterval = setTimeout(rotateSlides, 1500); // Restart the slider
       }, 4800);
 
       // Add click event to close the popup earlier
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
               popup.style.display = 'none';
               localStorage.setItem('popupSeen', 'true'); // Mark the popup as seen
-              sliderInterval = setTimeout(rotateSlides, 2000); // Restart the slider
+              sliderInterval = setTimeout(rotateSlides, 1500); // Restart the slider
           }, 500); // Adjust the timeout to match the slideOut animation duration
       });
    };
