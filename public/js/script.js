@@ -98,4 +98,20 @@ document.addEventListener("DOMContentLoaded", () => {
           }, 500); // Adjust the timeout to match the slideOut animation duration
       });
    };
+
+   // Adjust decor-image position dynamically
+   const captions = document.querySelectorAll('.caption');
+   const decorImageContainer = document.getElementById('decor-image-container');
+   if (captions.length > 0) {
+     let maxBottom = 0;
+     captions.forEach(caption => {
+       const captionBottom = caption.getBoundingClientRect().bottom + window.scrollY;
+       if (captionBottom > maxBottom) {
+         maxBottom = captionBottom;
+       }
+     });
+     const containerTop = decorImageContainer.getBoundingClientRect().top + window.scrollY;
+     const offset = maxBottom - containerTop + 20; // Add some space
+     decorImageContainer.style.marginTop = `${offset}px`;
+   }
 });
