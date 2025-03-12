@@ -1,0 +1,286 @@
+/* Общие стили */
+      @font-face {
+        font-family: "Monotype Corsiva";
+        src: url("../fonts/Monotype Corsiva/Monotype-Corsiva-Regular.ttf")
+          format("truetype");
+      }
+
+      @font-face {
+        font-family: "Georgia";
+        src: url("../fonts/Georgia/georgia.ttf") format("truetype");
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Georgia", serif;
+        background-image: url("../img/index/9.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 450px;
+        margin: 5px auto;
+        /* padding: 10px; */
+        overflow: hidden;
+      }
+
+      .title {
+        font-family: "Monotype Corsiva", cursive;
+        font-size: 26px;
+        color: #8b3a3a;
+        margin-bottom: 5px;
+      }
+
+      .dates-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+        margin: 0 auto 5px auto;
+      }
+
+      .date-block {
+        position: absolute;
+        width: 82%;
+        font-family: "Monotype Corsiva", cursive;
+        font-size: 12px;
+        color: #2e2e2e;
+        font-style: italic;
+        line-height: 1.2;
+        text-align: center;
+        transition: transform 0.6s ease-out;
+        z-index: 1;
+      }
+
+      .date-right {
+        right: 0;
+        transform: translateX(0%);
+      }
+
+      .date-left {
+        left: 0;
+        transform: translateX(0%);
+      }
+
+      .date-block div {
+        margin: 1px 0;
+      }
+
+      .image-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+        z-index: 2;
+      }
+
+      .content {
+      margin: 2px auto;
+      text-align: center;
+      font-size: 12px;
+      color: #333;
+      line-height: 1.3;
+      white-space: pre-line;
+      padding: 10px;
+      }
+
+      .content p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .decor-image {
+        width: 600px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto !important; /* Remove top margin to move closer to slider */
+      }
+
+      .footer-block {
+        margin-top: 5px;
+      }
+
+      .final-image-container {
+        position: relative;
+        display: inline-block;
+        width: 60%;
+        margin: 0 auto;
+      }
+
+      .final-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .stamp-overlay {
+        position: absolute;
+        left: 5%;
+        bottom: 5%;
+        width: 20%;
+        height: auto;
+        pointer-events: none;
+      }
+
+      .pressable-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        box-sizing: border-box;
+        font-family: "Monotype Corsiva", cursive;
+      font-size: clamp(16px, 3vw, 24px);
+        color: #8b3a3a;
+        cursor: pointer;
+        text-align: center;
+        transition: 0.2s ease;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 1.2;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+
+      .pressable-text:active {
+        transform: translate(-50%, -50%) scale(0.97);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Стили для слайдера */
+      .high-slider {
+        text-align: center;
+      }
+
+      .high-slider-title {
+        font-family: "Monotype Corsiva", cursive;
+        font-weight: bold;
+        font-size: 26px;
+        color: #8b3a3a;
+        margin-bottom: 20px;
+      }
+
+      .rotator {
+         padding: 0;
+        display: flex;
+        width: 100%; /* Adjust width based on the number of slides */
+      }
+
+      .rotator > li {
+        flex: 0 0 50%;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .rotator img {
+         max-width: 92%;
+      }
+
+      .rotator > li:hover > div {
+        box-shadow: 0 20px 15px -10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Полупрозрачная подложка */
+      .ai-popup {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        display: none; /* изначально скрыто */
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 9999;
+        cursor: pointer; /* Add click cursor */
+      }
+
+      /* Контейнер анимации (рука выезжает слева) */
+      .ai-popup-content {
+        position: absolute;
+        /* Поднимаем выше, например на 30% (вместо 40%) */
+        top: 30%;
+        left: 0;
+        /* Уводим за левый край, чтобы «выезжала» */
+        transform: translate(-100vw, -50%);
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        background: transparent; 
+        border: none; 
+        padding: 0;
+      }
+
+      /* Контейнер для картинки и текста:
+         Увеличиваем диапазон (чтобы всё было больше):
+         - минимум 300px
+         - ~35% ширины экрана
+         - максимум 450px
+      */
+      .hand-leaf-container {
+        position: relative;
+        display: inline-block;
+        width: clamp(300px, 35vw, 450px); /* Set maximum size to 450px */
+        height: auto;
+      }
+
+      /* Картинка «рука с листом» */
+      .ai-popup-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Текст поверх «листка» */
+      .ai-popup-text {
+        position: absolute;
+        /* Координаты примерно в центре белого поля */
+        top: 40%;
+        left: 65%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        /*
+          Уменьшаем шрифт:
+          - минимум 14px
+          - 1.8vw по умолчанию
+          - максимум 20px
+        */
+        font-size: clamp(14px, 1.8vw, 20px);
+        line-height: 1.3;
+        color: #000;
+        text-align: center;
+        /* Для отладки:
+           background: rgba(255, 0, 0, 0.2); */
+      }
+
+      /* Анимация «выезда» слева → вправо */
+      @keyframes slideIn {
+        0% {
+          transform: translate(-100vw, -50%);
+        }
+        100% {
+          transform: translate(0, -50%);
+        }
+      }
+
+      /* Анимация «уезда» обратно вправо → влево */
+      @keyframes slideOut {
+        0% {
+          transform: translate(0, -50%);
+        }
+        100% {
+          transform: translate(-100vw, -50%);
+        }
+      }
