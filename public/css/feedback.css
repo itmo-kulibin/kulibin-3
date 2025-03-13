@@ -11,19 +11,17 @@
    align-items: center;
    margin: 0;
    padding: 0;
-   background-image: url("../img/index/9.jpg");
+   background: url("../img/index/9.jpg") no-repeat center center;
    background-size: cover;
-   background-repeat: no-repeat;
-   background-position: center;
-   min-height: 100vh;
  }
 
  .container {
    position: relative;
-   height: 80%;
    width: 100%;
-   max-width: 450px;
-   border-radius: 10px;
+   max-width: 400px;
+   margin: 0 auto;
+   padding: 0 10px 20px; /* Padding left/right and bottom */
+   overflow-x: hidden; /* Hide horizontal scroll */
  }
 
  .title {
@@ -94,7 +92,7 @@
    font-size: 24px;
    color: #195744;
    text-decoration: none;
-   margin-top: 150px;
+   margin-top: 50px;
    position: relative;
    padding: 20px 20px;
  }
@@ -168,8 +166,7 @@
    width: 80%;
    max-width: 500px;
    text-align: center;
-   font-family: Arial, sans-serif;
-   line-height: 1.6;
+   font-family: Georgia, serif;
    margin: 20px;
    max-height: 80vh;
    overflow-y: auto;
@@ -180,14 +177,13 @@
    color: #000;
    text-align: center;
    margin-bottom: 20px;
-   text-transform: uppercase;
  }
 
  /* Стили для членов команды */
  .team-member {
    font-size: 15px;
    color: #000;
-   margin: 10px 0;
+   margin: 4px 0; /* Reduce margin to shorten the gap between lines */
    padding-left: 20px;
    position: relative;
  }
@@ -206,8 +202,7 @@
    font-size: 15px;
    color: #000;
    text-align: center;
-   font-style: italic;
-   margin-bottom: 30px;
+   margin-bottom: 0px;
  }
 
  /* Стили для блока контактов */
@@ -220,17 +215,9 @@
 
  /* Стили для заголовка контактов */
  .contact-title {
-   font-size: 22px;
-   color: #000;
-   margin-bottom: 15px;
-   text-align: center;
- }
-
- /* Стили для контакта разработчика */
- .developer-contact {
    font-size: 16px;
    color: #000;
-   margin: 10px 0;
+   margin-bottom: 15px;
    text-align: center;
  }
 
@@ -252,29 +239,38 @@
    align-items: center;
    justify-content: center;
  }
+ .page-header {
+   text-align: center;
+   position: relative;
+   padding: 60px 0 30px; /* Increase padding top to avoid overlap with laurels */
+   margin-bottom: 0;
+ }
  .header-title {
    display: inline-block;
-   font-size: 24px;
-   color: #8b0000;
+   margin: 0;
+   font-size: 26px;
    line-height: 29.17px;
+   font-family: 'Monotype Corsiva', serif;
+   color: #8b3a3a;
    font-weight: 400;
    max-width: 75%; /* Wrap to a new line only if it reaches 75% of container width */
  }
- .laurel-left,
- .laurel-right {
+   /* Лавровые ветви: большие (130×130) */
+   .laurel-left,
+   .laurel-right {
    position: absolute;
    width: 130px;
    height: 130px;
    top: 50%;
    transform: translateY(-50%);
- }
- .laurel-left {
-   left: 0; /* Align to the left border of the page container */
- }
- .laurel-right {
-   right: 0; /* Align to the right border of the page container */
+   }
+   .laurel-left {
+   left: -30px; /* Move 30px closer to the left border */
+   }
+   .laurel-right {
+   right: -30px; /* Move 30px closer to the right border */
    transform: translateY(-50%) scaleX(-1); /* Mirror the left laurel */
- }
+   }
 
  /* Класс для блокировки прокрутки фона */
  .no-scroll {

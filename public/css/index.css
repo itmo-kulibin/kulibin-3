@@ -47,7 +47,7 @@
         position: absolute;
         width: 82%;
         font-family: "Monotype Corsiva", cursive;
-        font-size: 12px;
+        font-size: 18px; /* Increased font size */
         color: #2e2e2e;
         font-style: italic;
         line-height: 1.2;
@@ -72,8 +72,8 @@
 
       .image-container {
         position: relative;
-        width: 200px;
-        height: 200px;
+        width: 175px;
+        height: 175px;
         display: flex;
         justify-content: center;
         align-items: center;
