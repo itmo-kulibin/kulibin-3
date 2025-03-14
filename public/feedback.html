@@ -30,11 +30,20 @@
           <div class="pressable-text-survey">Оценить</div>
         </div>
       </div>
-      <a href="#" class="site-link">
-        О сайте
-        <span class="corner-top-right"></span>
-        <span class="corner-bottom-left"></span>
-      </a>
+
+      <!--КНОПКИ-->
+      <div id="buttons-container">
+        <button class="site-link back-button" id="backButton">
+          <span class="btn-text" id="backText">Вернуться</span>
+          <span class="corner-top-right"></span>
+          <span class="corner-bottom-left"></span>
+        </button>
+        <a href="#" class="site-link">
+          О сайте
+          <span class="corner-top-right"></span>
+          <span class="corner-bottom-left"></span>
+        </a>
+      </div>
     </div>
 
     <div id="modal-overlay">
@@ -57,7 +66,7 @@
           Организатор и руководитель проекта:
         </h1>
         <p class="project-leader">
-           Преподаватель центра социальных и&nbsp;гуманитарных наук<br> Кудина Юлия Игоревна<br> <a href="https://t.me/J88588678" target="_blank">@J88588678</a>
+           Преподаватель центра социальных и&nbsp;гуманитарных наук<br> Кудина Юлия Игоревна<br> <!--contact deleted -->
         </p>
 
         <div class="contact-info">
@@ -69,23 +78,36 @@
       </div>
     </div>
 
+    <!--ВОЗВРАЩЕНИЕ-->
+    <script>
+      document.getElementById('backButton').addEventListener('click', () => {
+        setTimeout(() => {
+          window.location.href = "third_section.html";
+        }, 750); // Ensure the animation plays out before navigating
+      });
+    </script>
+    <script src="js/buttons.js"></script>
+    <!--МОДАЛЬНОЕ ОКНО И АНИМАЦИИ КНОПОК-->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const siteLink = document.querySelector(".site-link");
+        const siteLinks = document.querySelectorAll(".site-link");
         const modalOverlay = document.getElementById("modal-overlay");
         const body = document.body;
+        siteLinks.forEach(siteLink => {
+          siteLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            this.classList.toggle("enlarged");
+            /* Проверяем, является ли нажатая кнопка "Вернуться" */
+            if (!this.classList.contains('back-button')) {
+              modalOverlay.style.display = "flex";
+              body.classList.add("no-scroll");
+            }
 
-        siteLink.addEventListener("click", function (event) {
-          event.preventDefault();
-          siteLink.classList.toggle("enlarged");
-          modalOverlay.style.display = "flex";
-          body.classList.add("no-scroll");
-
-          setTimeout(() => {
-            siteLink.classList.remove("enlarged");
-          }, 300);
+            setTimeout(() => {
+              this.classList.remove("enlarged");
+            }, 300);
+          });
         });
-
         modalOverlay.addEventListener("click", function (event) {
           if (event.target === modalOverlay) {
             modalOverlay.style.display = "none";
@@ -94,6 +116,7 @@
         });
       });
     </script>
+    <!--ССЫЛКА НА ГУГЛ_ОПРОС-->
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         const pressableText = document.querySelector(".pressable-text-survey");
