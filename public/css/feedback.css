@@ -106,6 +106,7 @@ body {
   margin-top: 50px;
   position: relative;
   padding: 20px 20px;
+  cursor: pointer; /* Make cursor a pointer */
 }
 
 .site-link::before,
