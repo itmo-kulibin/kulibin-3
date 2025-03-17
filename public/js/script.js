@@ -55,32 +55,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const popup = document.getElementById('ai-popup');
       const popupContent = popup.querySelector('.ai-popup-content');
 
-      // Check if the user has already seen the popup
-      if (localStorage.getItem('popupSeen') === 'true') {
-          sliderInterval = setTimeout(rotateSlides, 3000); // Restart the slider
-          return;
-      }
-
-      // Показываем pop-up
+      // Show the popup every time the page is loaded
       popup.style.display = 'block';
 
-      // Запускаем анимацию "выезда" через 0.25с
+      // Start the slide-in animation after 0.25s
       setTimeout(() => {
           popupContent.style.animationName = 'slideIn';
       }, 250);
 
-      // Останавливаем слайдер
+      // Stop the slider
       clearTimeout(sliderInterval);
 
-      // Через 4с - "уезд"
+      // Slide out after 4s
       const slideOutTimeout = setTimeout(() => {
           popupContent.style.animationName = 'slideOut';
       }, 4500);
 
-      // Ещё через 1.05с (4.8с всего) - скрываем и перезапускаем слайдер
+      // Hide the popup and restart the slider after 4.8s
       const hidePopupTimeout = setTimeout(() => {
           popup.style.display = 'none';
-          localStorage.setItem('popupSeen', 'true'); // Mark the popup as seen
           sliderInterval = setTimeout(rotateSlides, 1500); // Restart the slider
       }, 4800);
 
@@ -91,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
           popupContent.style.animationName = 'slideOut';
           setTimeout(() => {
               popup.style.display = 'none';
-              localStorage.setItem('popupSeen', 'true'); // Mark the popup as seen
               sliderInterval = setTimeout(rotateSlides, 1500); // Restart the slider
           }, 500); // Adjust the timeout to match the slideOut animation duration
       });
